@@ -1,0 +1,55 @@
+<html>
+    <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!--<script src="node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" defer></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@metamask/onboarding@1.0.1/dist/metamask-onboarding.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@metamask/detect-provider@1.2.0/dist/detect-provider.min.js"></script>
+        <script src="js/contract.js" defer></script>
+        <script src="js/battle.js"></script>
+
+        <title>
+            CryptoWiz - Battle (TEST)
+        </title>
+    </head>
+
+    <body>
+        <nav class="col-md-12 navbar navbar-light bg-light page-title mb-3">
+            <a class="navbar-brand" href="#">
+                <img src="img\pg.png" width="30" height="30" class="d-inline-block align-top" alt="Immagine player">
+                CryptoWiz-TEST
+            </a>            
+            <div class="form-inline">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>0 CWIZt</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
+                <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton" disabled></button>
+                <!--<button class="btn btn-outline-success my-2 my-sm-0" id="getAccounts">eth_accounts</button>-->                
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="card col-md-8 text-center mr-2 ml-2">
+                    <div class="card-body" style="align-self: center;">
+                        <h5 class="card-title">Battle Against CPU </h5>
+                        <p class="card-text">Fight with your CryptoWiz against the CPU to win a CryptoWiz NFT equipment!!</p>
+                        <canvas id="viewport" ></canvas>
+                        <div class="row"></div>
+                            <div class="col-md-5"></div>
+                            <button type="button" class="btn btn-primary btn-lg col-md-2" onclick="test()">PLAY</button>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -12,7 +12,7 @@ const chain_MATIC = {
     decimals: 18
   },                  
   rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
-  blockExplorerUrls: ['https://explorer.matic.network/'] 
+  blockExplorerUrls: ['https://explorer.matic.network/']
 };
 let minABI = [
   {
@@ -36,7 +36,7 @@ let web3 = null;
 let currentAddress = '';
 let balance_token_nativo = null;
 
-$(document).ready(() => {    
+$(document).ready(() => {
   if (! Boolean(window.ethereum)) {
     onboardButton.innerText = 'Click here to install MetaMask!';
     onboardButton.onclick = () => {onboardButton.innerText = 'Onboarding in progress'; onboardButton.disabled = true; onboarding.startOnboarding();};
@@ -44,10 +44,10 @@ $(document).ready(() => {
     web3 = new Web3(window.ethereum);
     onboardButton.innerText = 'CONNECT';
     onboardButton.onclick = () => {web3.eth.requestAccounts().then(checkConnect).catch((err) => {console.log(err);});};
-    web3.eth.getAccounts().then(checkConnect)
-    //window.ethereum.on('accountsChanged', handleAccountsChanged);    
-    //window.ethereum.on('chainChanged', handleChainChanged);
-    }
+    web3.eth.getAccounts().then(checkConnect);
+    web3.currentProvider.on('accountsChanged', handleAccountsChanged);    
+    web3.currentProvider.on('chainChanged', handleChainChanged);
+  }
   return;
 });
 
@@ -69,7 +69,7 @@ async function getBalanceNative() {
 }
 
 async function getBalance(token_name, token_address) {
-  let contract = new web3.eth.Contract(minABI,token_address);
+  let contract = new web3.eth.Contract(minABI, token_address);
   let to_ret = null;
   let wait_resp = true;
   while (wait_resp) {
@@ -91,13 +91,6 @@ async function checkConnect(accounts){
     handleAccountsChanged(accounts);
     chain_id = await web3.eth.getChainId();
     handleChainChanged(chain_id);
-    /*
-    try {
-      web3.currentProvider.request({
-        method: 'eth_getBalance',
-        params: [currentAddress ,'latest'],
-      }).then(readBalance);
-    } catch (error) {console.log(error); console.log(error.code)}*/
     getBalanceNative().then(console.log);
     for (let [key, value] of Object.entries(token_check)) {
       getBalance(key, value).then(console.log)
@@ -128,6 +121,6 @@ function handleChainChanged (chainId) {
 
 function handleAccountsChanged(accounts) {
     currentAddress = accounts[0];
-    onboardButton.innerText = currentAddress.substring(0,4).concat("...").concat( currentAddress.substring(currentAddress.length-4,currentAddress.length));
+    onboardButton.innerText = currentAddress.substring(0, 4).concat("...").concat(currentAddress.substring(currentAddress.length-4, currentAddress.length));
     return;
 }

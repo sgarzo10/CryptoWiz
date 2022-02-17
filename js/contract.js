@@ -1,3 +1,8 @@
+/* 
+se una funzione viene richiamata con await si attende il termine dell'esecuzione e il si può usare il classico try catch
+per usare await la funzione deve essere definita come async
+se una funzione viene richiamata senza await ed è asicrona è necessario specificare il then e il catch
+*/
 const chain_MATIC = {
   chainId: '0x89',
   chainName: 'Polygon Mainnet',
@@ -98,7 +103,9 @@ async function getBalance(token_name, token_address) {
 async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);
-    await web3.eth.getChainId().then(handleChainChanged);
+    chain_id = await web3.eth.getChainId();
+    console.log(chain_id)
+    handleChainChanged(chain_id)
     /*
     try {
       web3.currentProvider.request({

@@ -36,33 +36,19 @@ let web3 = null;
 let currentAddress = '';
 let balance_token_nativo = null;
 
-$(document).ready(() => {
-
-  const onClickInstall = () => {
-    onboardButton.innerText = 'Onboarding in progress';
-    onboardButton.disabled = true;
-    onboarding.startOnboarding();
-  };
-  const onClickConnect = async () => {
-    try {
-      await web3.eth.requestAccounts().then(checkConnect);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-    
+$(document).ready(() => {    
   if (! Boolean(window.ethereum)) {
     onboardButton.innerText = 'Click here to install MetaMask!';
-    onboardButton.onclick = onClickInstall;
+    onboardButton.onclick = () => {onboardButton.innerText = 'Onboarding in progress'; onboardButton.disabled = true; onboarding.startOnboarding();};
   } else {
-    //web3 = new Web3("https://cloudflare-eth.com");
     web3 = new Web3(window.ethereum);
     onboardButton.innerText = 'CONNECT';
-    onboardButton.onclick = onClickConnect;
+    onboardButton.onclick = () => {web3.eth.requestAccounts().then(checkConnect).catch((err) => {console.log(err);});};
     web3.eth.getAccounts().then(checkConnect)
     //window.ethereum.on('accountsChanged', handleAccountsChanged);    
     //window.ethereum.on('chainChanged', handleChainChanged);
     }
+  return;
 });
 
 async function getBalanceNative() {
@@ -74,8 +60,8 @@ async function getBalanceNative() {
       balance_token_nativo = balance / Math.pow(10, chain_MATIC['nativeCurrency']['decimals']);
       wait_resp = false;
     } catch (error) {
-      console.log(error);
-      if (JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code'] != -32005)
+      error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
+      if (error_code != -32005 && error_code != -32000)
         wait_resp = false;
     }
   }
@@ -92,12 +78,12 @@ async function getBalance(token_name, token_address) {
       to_ret = balance / Math.pow(10, chain_MATIC['nativeCurrency']['decimals']);
       wait_resp = false;
     } catch (error){
-      console.log(error);
-      if (JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code'] != -32005)
+      error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
+      if (error_code != -32005 && error_code != -32000)
         wait_resp = false;
     }
   }
-  return to_ret
+  return to_ret;
 }
 
 async function checkConnect(accounts){
@@ -117,6 +103,7 @@ async function checkConnect(accounts){
       getBalance(key, value).then(console.log)
     }
   }
+  return;
 }
 
 function handleChainChanged (chainId) {
@@ -135,10 +122,12 @@ function handleChainChanged (chainId) {
       }
     });
   }
-  getChainButton.innerText = button_text;   
+  getChainButton.innerText = button_text;
+  return;
 }
 
 function handleAccountsChanged(accounts) {
     currentAddress = accounts[0];
     onboardButton.innerText = currentAddress.substring(0,4).concat("...").concat( currentAddress.substring(currentAddress.length-4,currentAddress.length));
+    return;
 }

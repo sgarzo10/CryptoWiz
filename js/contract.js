@@ -104,8 +104,7 @@ async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);
     chain_id = await web3.eth.getChainId();
-    console.log(chain_id)
-    handleChainChanged(chain_id)
+    handleChainChanged(chain_id);
     /*
     try {
       web3.currentProvider.request({

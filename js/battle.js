@@ -6,7 +6,7 @@ let prec_move = 0;
 let time_sleep = 100;
 let move_incr = 0.02;
 
-$(document).ready(() => {
+function init_battle(){
     canvas = $('#viewport')[0];
     canvas.width = screen.width * 0.6;
     canvas.height = screen.height * 0.4;
@@ -23,7 +23,7 @@ $(document).ready(() => {
         draw_canvas();
     });
     return;
-});
+}
 
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));

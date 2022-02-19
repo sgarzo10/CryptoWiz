@@ -5,14 +5,20 @@
     
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="css/main.css" type="text/css">
+
+        <script src="config.json"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@metamask/onboarding@1.0.1/dist/metamask-onboarding.bundle.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@metamask/detect-provider@1.2.0/dist/detect-provider.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         <script src="js/contract.js" defer></script>
         <script src="js/battle.js"></script>
+        <script src="js/main.js" defer></script>        
 
         <title>
             CryptoWiz - Battle (TEST)
@@ -20,7 +26,7 @@
     </head>
 
     <body>
-        <nav class="col-md-12 navbar navbar-light bg-light page-title mb-3">
+        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap page-title mb-3">            
             <a class="navbar-brand" href="#">
                 <img src="img\pg.png" width="30" height="30" class="d-inline-block align-top" alt="Immagine player">
                 CryptoWiz-TEST
@@ -29,12 +35,18 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>0 CWIZt</button>
                 <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
                 <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton"></button>
-                <!--<button class="btn btn-outline-success my-2 my-sm-0" id="getAccounts">eth_accounts</button>-->                
             </div>
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <nav class="card bg-light">
+                        <div class="sidebar-sticky">
+                            <ul id="col_menu" class="nav flex-column">
+                            </ul>
+                        </div>                        
+                    </nav>
+                </div>
                 <div class="card col-md-8 text-center mr-2 ml-2">
                     <div class="card-body" style="align-self: center;">
                         <h5 class="card-title">Battle Against CPU </h5>
@@ -50,5 +62,18 @@
                 <div class="col-md-2"></div>
             </div>
         </div>
+
+        <script id="menu-template" type="text/x-handlebars-template">
+            {{#each this}}
+                <li class="nav-item">
+                    <a class="nav-link" >
+                        <span data-feather="{{this.icon}}"></span>
+                        {{this.name}}
+                    </a>
+                </li>                
+            {{/each}}
+        </script>        
+
     </body>
 </html>
+

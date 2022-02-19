@@ -3,40 +3,16 @@ se una funzione viene richiamata con await si attende il termine dell'esecuzione
 per usare await la funzione deve essere definita come async
 se una funzione viene richiamata senza await ed è asicrona è necessario specificare il then e il catch
 */
-const chain_MATIC = {
-  chainId: '0x89',
-  chainName: 'Polygon Mainnet',
-  nativeCurrency: {
-    name: 'MATIC',
-    symbol: 'MATIC',
-    decimals: 18
-  },                  
-  rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
-  blockExplorerUrls: ['https://explorer.matic.network/']
-};
-let minABI = [
-  {
-    "constant":true,
-    "inputs":[{"name":"_owner","type":"address"}],
-    "name":"balanceOf",
-    "outputs":[{"name":"balance","type":"uint256"}],
-    "type":"function"
-  }
-];
-let token_check = {
-  "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
-  "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
-}
 const forwarderOrigin = 'http://localhost:8080'
 let onboarding = new MetaMaskOnboarding({ forwarderOrigin });
-let onboardButton = document.getElementById('connectButton');
-let getBalanceButton = document.getElementById('getBalance');
-let getChainButton = document.getElementById('getChain');
+let onboardButton = $('#connectButton')[0];
+let getBalanceButton = $('#getBalance')[0];
+let getChainButton = $('#getChain')[0];
 let web3 = null;
 let currentAddress = '';
 let balance_token_nativo = null;
 
-$(document).ready(() => {
+function init_contract(){
   if (! Boolean(window.ethereum)) {
     onboardButton.innerText = 'Click here to install MetaMask!';
     onboardButton.onclick = () => {onboardButton.innerText = 'Onboarding in progress'; onboardButton.disabled = true; onboarding.startOnboarding();};
@@ -49,7 +25,7 @@ $(document).ready(() => {
     web3.currentProvider.on('chainChanged', handleChainChanged);
   }
   return;
-});
+}
 
 async function getBalanceNative() {
   balance_token_nativo = null;
@@ -57,7 +33,7 @@ async function getBalanceNative() {
   while (wait_resp) {
     try {
       balance = await web3.eth.getBalance(currentAddress);
-      balance_token_nativo = balance / Math.pow(10, chain_MATIC['nativeCurrency']['decimals']);
+      balance_token_nativo = balance / Math.pow(10, config["chain"]['native_currency']['decimals']);
       wait_resp = false;
     } catch (error) {
       error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
@@ -69,13 +45,13 @@ async function getBalanceNative() {
 }
 
 async function getBalance(token_name, token_address) {
-  let contract = new web3.eth.Contract(minABI, token_address);
+  let contract = new web3.eth.Contract(config["methods"], token_address);
   let to_ret = null;
   let wait_resp = true;
   while (wait_resp) {
     try {
       balance = await contract.methods.balanceOf(currentAddress).call();
-      to_ret = balance / Math.pow(10, chain_MATIC['nativeCurrency']['decimals']);
+      to_ret = balance / Math.pow(10, config["chain"]['native_currency']['decimals']);
       wait_resp = false;
     } catch (error){
       error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
@@ -92,7 +68,7 @@ async function checkConnect(accounts){
     chain_id = await web3.eth.getChainId();
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);
-    for (let [key, value] of Object.entries(token_check)) {
+    for (let [key, value] of Object.entries(config["tokens"])) {
       getBalance(key, value).then(console.log)
     }
   }
@@ -100,17 +76,17 @@ async function checkConnect(accounts){
 }
 
 function handleChainChanged (chainId) {
-  button_text = chain_MATIC['nativeCurrency']['name']
-  if (chainId != chain_MATIC['chainId']) {
-    button_text = 'SWITCH TO ' + chain_MATIC['nativeCurrency']['name'];
+  button_text = config["chain"]['native_currency']['name']
+  if (chainId != config["chain"]['id']) {
+    button_text = 'SWITCH TO ' + config["chain"]['native_currency']['name'];
     web3.currentProvider.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: chain_MATIC['chainId'] }],
+      params: [{ chainId: config["chain"]['id'] }],
     }).catch((err) => {
       if (err.code === 4902) {
           web3.currentProvider.request({
             method: 'wallet_addEthereumChain',
-            params: [chain_MATIC],
+            params: [config["chain"]],
           }).catch((addError) => {console.log(addError)});
       }
     });

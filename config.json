@@ -1,0 +1,36 @@
+var config = {
+    "chain": {
+        "id": "0x89",
+        "name": "Polygon Mainnet",
+        "native_currency": {
+            "name": "MATIC",
+            "symbol": "MATIC",
+            "decimals": 18
+        },                  
+        "rpc_urls": ["https://rpc-mainnet.maticvigil.com/"],
+        "block_explorer_urls": ["https://explorer.matic.network/"]
+    },
+    "methods": [
+        {
+            "constant": true,
+            "inputs": [{"name":"_owner","type":"address"}],
+            "name": "balanceOf",
+            "outputs": [{"name":"balance","type":"uint256"}],
+            "type": "function"
+        }
+    ],
+    "tokens": {
+        "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
+        "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+    },
+    "menu": [
+        {
+            "name":"MINT",
+            "icon":"meh"
+        },
+        {
+            "name":"BATTLE",
+            "icon":"shield"
+        }        
+    ]    
+}

@@ -68,6 +68,8 @@ async function checkConnect(accounts){
     chain_id = await web3.eth.getChainId();
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);
+    getBalance("CWIZt",config["tokens"]["CWIZt"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" CWIZt")});
+    //Debug
     for (let [key, value] of Object.entries(config["tokens"])) {
       getBalance(key, value).then(console.log)
     }

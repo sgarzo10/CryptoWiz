@@ -7,10 +7,27 @@ body {
   background: linear-gradient(to right, #4e1385, rgba(75, 185, 236, 0.8));
 }
 
+.banner{
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .feather {
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
+}
+
+.a_social{
+  margin: 8px;
+  text-align: -webkit-center;
+  padding: auto;
+}
+
+#main{
+  align-items: center;
+  /* vertical-align: -webkit-baseline-middle; */
+  padding: 10px;
 }
 
 /*
@@ -58,7 +75,8 @@ body {
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #adebeb8a;
+  background-color: #adebeb8a;
+  padding: 8px;
 }
 
 .sidebar .nav-link {
@@ -108,7 +126,7 @@ body {
   width: 100%;
 }
 
-img:hover {
+#logo:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }

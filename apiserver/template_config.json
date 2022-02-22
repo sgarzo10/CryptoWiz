@@ -1,0 +1,33 @@
+{
+    "BSC": {
+        "coin":"BNB",
+        "apy_key": "<API-KEY>",
+        "token_list": {
+            "CAKE": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "BUSD": "0xe9e7cea3dedca5984780bafc599bd69add087d56"
+        },
+        "url_s": "https://api.bscscan.com/api?module=account&action=balance&address={wallet}&apikey={apy_key}",
+        "url_sToken": "https://api.bscscan.com/api?module=account&action=tokenbalance&address={wallet}&tag=latest&apikey={apy_key}&contractaddress="
+    },
+    "MATIC": {
+        "coin": "MATIC",
+        "apy_key": "<API-KEY>",
+        "token_list": {
+            "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
+            "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+        },
+        "url_s": "https://api.polygonscan.com/api?module=account&action=balance&address={wallet}&apikey={apy_key}",
+        "url_sToken": "https://api.polygonscan.com/api?module=account&action=tokenbalance&address={wallet}&tag=latest&apikey={apy_key}&contractaddress="
+    },
+    "FTM": {
+        "coin": "FTM",
+        "apy_key": "<API-KEY>",
+        "token_list": {
+            "MIM": "0x82f0b8b456c1a451378467398982d4834b6829c1",
+            "WFTM": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
+            "BTC": "0x321162Cd933E2Be498Cd2267a90534A804051b11"
+        },
+        "url_s": "https://api.ftmscan.com/api?module=account&action=balance&address={wallet}&apikey={apy_key}",
+        "url_sToken": "https://api.ftmscan.com/api?module=account&action=tokenbalance&address={wallet}&tag=latest&apikey={apy_key}&contractaddress="
+    }
+}

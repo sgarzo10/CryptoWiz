@@ -102,3 +102,54 @@ function handleAccountsChanged(accounts) {
     onboardButton.innerText = currentAddress.substring(0, 4).concat("...").concat(currentAddress.substring(currentAddress.length-4, currentAddress.length));
     return;
 }
+
+async function getOpenseaItems() {
+  if (currentAddress === "") { return }
+  const osContainer = document.getElementById('openseaItems')
+
+  //const items = await fetch(`https://api.opensea.io/api/v1/assets?owner=${window.userAddress}&order_direction=desc&offset=0&limit=50`)
+  const items = await fetch("https://api.opensea.io/api/v1/assets?owner=".concat(currentAddress).concat("&order_direction=desc&offset=0&limit=50"),
+    { 
+      method: 'PATCH',
+      headers: {
+        'Access-Control-Request-Headers': 'Content-Type,Access-Control-Allow-Origin',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }        
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res.assets
+    })
+    .catch((e) => {
+      console.error(e)
+      console.error('Could not talk to OpenSea')
+      return null
+    })
+
+  if (items.length === 0) { return }
+
+  items.forEach((nft) => {
+    const { name, image_url, description, permalink } = nft
+
+    const newElement = document.createElement('div')
+    newElement.innerHTML = `
+      <!-- Opensea listing item-->
+      <a href='${permalink}' target="_blank">
+        <div class='flex flex-col'>
+          <img
+            src='${image_url}'
+            class='w-full rounded-lg' />
+          <div class='flex-col w-full space-y-1'>
+            <p class='text-gray-800 text-lg'>${name}</p>
+            <!-- <p class='text-gray-500 text-xs word-wrap'>${description ?? ''}</p>-->
+          </div>
+        </div>
+      </a>
+      <!-- End Opensea listing item-->
+    `
+
+    osContainer.appendChild(newElement)
+  })
+}

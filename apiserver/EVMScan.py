@@ -1,7 +1,10 @@
 from urllib.request import urlopen, Request
 from json import load, loads, dumps
-
 from math import pow
+
+header = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36'
+}
 
 def router_Scan(wallet,chain=''):
     conf_file = open('config.json')
@@ -15,6 +18,11 @@ def router_Scan(wallet,chain=''):
                 msg['response'].append(EVM_Scan(wallet, k, router_EVM[k]['coin'], router_EVM[k]['token_list'], url_s, url_sToken))
     return msg
 
+def getOpenSeaNFT(TokenID='86878125432023963361188205560853538656658503492234669844754453271333010669569'):
+    #https://api.opensea.io/api/v2/metadata/matic/0x2953399124F0cBB46d2CbACD8A89cF0599974963/{id}
+    url = f"https://api.opensea.io/api/v2/metadata/matic/0x2953399124F0cBB46d2CbACD8A89cF0599974963/{TokenID}"
+    res = urlopen(Request(url, headers=header)).read()
+    return loads(res)
 
 def EVM_Scan(wallet,chain,coin,token_list,url_s,url_sToken):
     
@@ -22,9 +30,6 @@ def EVM_Scan(wallet,chain,coin,token_list,url_s,url_sToken):
         'wallet': '',
         'balance': [],
         'chain': ''
-    }
-    header = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36'
     }
 
     response['wallet'] = wallet

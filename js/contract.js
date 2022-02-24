@@ -103,6 +103,8 @@ function handleAccountsChanged(accounts) {
     return;
 }
 
+
+/*
 async function getOpenseaItems() {
   if (currentAddress === "") { return }
   const osContainer = document.getElementById('openseaItems')
@@ -153,3 +155,4 @@ async function getOpenseaItems() {
     osContainer.appendChild(newElement)
   })
 }
+*/

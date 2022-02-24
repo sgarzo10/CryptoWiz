@@ -27,7 +27,11 @@ var config = {
         {
             "name":"HOME",
             "icon":"home"
-        },        
+        },
+        {
+            "name":"NFT",
+            "icon":"meh"
+        },
         {
             "name":"MINT",
             "icon":"meh"
@@ -40,6 +44,10 @@ var config = {
     "page_home": {
         "title":"CryptoWiz NFT Adventures",
         "text":"Create and customize your unique CryptoWiz NFT to play a new DEGEN crypto adventure."
+    },    
+    "page_nft": {
+            "title":"Show CryptoWiz NFT",
+            "text":"TEST"
     },    
     "page_mint": {
             "title":"Mint new CryptoWiz NFT",

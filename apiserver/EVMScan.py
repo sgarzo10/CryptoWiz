@@ -24,6 +24,19 @@ def getOpenSeaNFT(TokenID='86878125432023963361188205560853538656658503492234669
     res = urlopen(Request(url, headers=header)).read()
     return loads(res)
 
+def getNFTBalance(contract_address,wallett_address):
+    #http://127.0.0.1:5000/test?c=0x2953399124f0cbb46d2cbacd8a89cf0599974963&w=0x49b363595ecDB335BEa64E4850472d9eF0609c99
+    ret = {
+        "TokenIDs":[]
+    }
+    url = f"https://polygonscan.com/token/generic-tokenholder-inventory?m=normal&contractAddress={contract_address}&a={wallett_address}&pUrl=token"
+    res = urlopen(Request(url, headers=header)).read()
+    out = str(res).split("tbody")[1].split("?a=")
+    for o in out:
+            if o.split("target=")[0][0] != ">": ret["TokenIDs"].append(o.split("target=")[0][:-3])
+    return ret
+
+
 def EVM_Scan(wallet,chain,coin,token_list,url_s,url_sToken):
     
     response = {

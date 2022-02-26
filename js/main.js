@@ -21,10 +21,33 @@ function menu_click(menu_name)
     col_main.html(template(config["page_".concat(menu_name.toLowerCase())]));
     
     if(menu_name === 'NFT') {
-        let img_nft = $('#img-nft')[0];
-        img_nft.src = "https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" 
+        setNFTImage("86878125432023963361188205560853538656658503492234669844754453270233499041793");
     }
 
     return;
 }
 
+function setNFTImage(TokenID){
+    if (currentAddress !== ''){        
+        var settings = {
+            'cache': false,
+            'dataType': "json",
+            "async": true,
+            "crossDomain": true,
+            "responseType": "application/json",
+            "url": "http://127.0.0.1:5000/os_nft?id="+TokenID,
+            "method": "GET",
+            "headers": {
+                "accept": "application/json",
+                'Access-Control-Allow-Methods':'GET',
+                'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token'
+            }
+        }
+        $.ajax(settings).done( function (response) {
+            console.log(response);
+            let img_nft = $('#img-nft')[0];
+            img_nft.src = response["image"]
+            //img_nft.src = "https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" 
+        });
+    }
+}  

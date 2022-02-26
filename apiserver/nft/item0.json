@@ -1,0 +1,33 @@
+{
+    "animation_url": null, 
+    "description": "CryptoWiz Item 0", 
+    "external_link": null, 
+    "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
+    "name": "CryptoWiz - Item #0000", 
+    "traits": [
+      {
+        "display_type": null, 
+        "max_value": null, 
+        "order": null, 
+        "trait_count": 1, 
+        "trait_type": "WizItem", 
+        "value": "Item 0"
+      }, 
+      {
+        "display_type": null, 
+        "max_value": 10.0, 
+        "order": null, 
+        "trait_count": 0, 
+        "trait_type": "level", 
+        "value": "0"
+      }, 
+      {
+        "display_type": "number", 
+        "max_value": 1000.0, 
+        "order": null, 
+        "trait_count": 0, 
+        "trait_type": "Nr.", 
+        "value": "0"
+      }
+    ]
+  }

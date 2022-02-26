@@ -19,13 +19,11 @@ def router_Scan(wallet,chain=''):
     return msg
 
 def getOpenSeaNFT(TokenID='86878125432023963361188205560853538656658503492234669844754453271333010669569'):
-    #https://api.opensea.io/api/v2/metadata/matic/0x2953399124F0cBB46d2CbACD8A89cF0599974963/{id}
     url = f"https://api.opensea.io/api/v2/metadata/matic/0x2953399124F0cBB46d2CbACD8A89cF0599974963/{TokenID}"
     res = urlopen(Request(url, headers=header)).read()
     return loads(res)
 
 def getNFTBalance(contract_address,wallett_address):
-    #http://127.0.0.1:5000/test?c=0x2953399124f0cbb46d2cbacd8a89cf0599974963&w=0x49b363595ecDB335BEa64E4850472d9eF0609c99
     ret = {
         "TokenIDs":[]
     }
@@ -38,21 +36,17 @@ def getNFTBalance(contract_address,wallett_address):
 
 
 def EVM_Scan(wallet,chain,coin,token_list,url_s,url_sToken):
-    
     response = {
         'wallet': '',
         'balance': [],
         'chain': ''
     }
-
     response['wallet'] = wallet
     response['chain'] = chain
     html = urlopen(Request(url_s, headers=header)).read()
     r = loads(html)
     response['balance'].append({'key':coin,'value':str(float(r['result']) / pow(10, 18))})
-    # print(f"{coin};{float(r['result']) / pow(10, 18)}")
     for key, value in token_list.items():
-        # print(f"{key}:{value}")
         html = urlopen(Request(url_sToken + value, headers=header)).read()
         r = loads(html)
         response['balance'].append({'key':key,'value':str(float(r['result']) / pow(10, 18))})

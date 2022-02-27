@@ -30,6 +30,15 @@ body {
   padding: 10px;
 }
 
+.bar_pg{
+  width: 100%;
+  background: #117a8b ;
+}
+
+.img_pg{
+  background: #068a9e ;
+}
+
 /*
  * Card
  */

@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 #http://127.0.0.1:5000/balance?w=0xc01346c420669cA0a2580Ab3a92c65E295C3F121
-#http://127.0.0.1:5000/os_nft?c=0x2953399124f0cbb46d2cbacd8a89cf0599974963&w=0x49b363595ecDB335BEa64E4850472d9eF0609c99
-#0xc01346c420669cA0a2580Ab3a92c65E295C3F121
+#http://127.0.0.1:5000/balance_os_nft?c=0x2953399124F0cBB46d2CbACD8A89cF0599974963&w=0x49b363595ecDB335BEa64E4850472d9eF0609c99
+#http://127.0.0.1:5000/os_nft?id=86878125432023963361188205560853538656658503492234669844754453276830568808449
+
 from EVMScan import router_Scan, getOpenSeaNFT, getNFTBalance
 from flask import Flask, request, jsonify
 from flask_cors import *
@@ -15,7 +16,7 @@ def hello():
     return jsonify(response)
 
 @app.route('/balance_os_nft')
-@cross_origin('google.com')
+@cross_origin()
 def balance_os_nft():
     ret = {}
     if request.args.get('c') != None and request.args.get('w') != None :
@@ -23,7 +24,7 @@ def balance_os_nft():
     return ret
 
 @app.route('/os_nft')
-@cross_origin('google.com')
+@cross_origin()
 def os_nft():
     ret = {}
     if request.args.get('id') != None:

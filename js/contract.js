@@ -11,6 +11,7 @@ let getChainButton = $('#getChain')[0];
 let web3 = null;
 let currentAddress = '';
 let balance_token_nativo = null;
+var nft_list = {};
 
 function init_contract(){
   if (! Boolean(window.ethereum)) {
@@ -66,6 +67,9 @@ async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);
     chain_id = await web3.eth.getChainId();
+    getNFTToken(config["token_contract"]);
+    for (let nft_id of Object.keys(nft_list))
+      getNFTJson(nft_id);   
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);
     getBalance("CWIZt",config["tokens"]["CWIZt"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" CWIZt")});
@@ -103,56 +107,52 @@ function handleAccountsChanged(accounts) {
     return;
 }
 
-
-/*
-async function getOpenseaItems() {
-  if (currentAddress === "") { return }
-  const osContainer = document.getElementById('openseaItems')
-
-  //const items = await fetch(`https://api.opensea.io/api/v1/assets?owner=${window.userAddress}&order_direction=desc&offset=0&limit=50`)
-  const items = await fetch("https://api.opensea.io/api/v1/assets?owner=".concat(currentAddress).concat("&order_direction=desc&offset=0&limit=50"),
-    { 
-      method: 'PATCH',
-      headers: {
-        'Access-Control-Request-Headers': 'Content-Type,Access-Control-Allow-Origin',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }        
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      return res.assets
-    })
-    .catch((e) => {
-      console.error(e)
-      console.error('Could not talk to OpenSea')
-      return null
-    })
-
-  if (items.length === 0) { return }
-
-  items.forEach((nft) => {
-    const { name, image_url, description, permalink } = nft
-
-    const newElement = document.createElement('div')
-    newElement.innerHTML = `
-      <!-- Opensea listing item-->
-      <a href='${permalink}' target="_blank">
-        <div class='flex flex-col'>
-          <img
-            src='${image_url}'
-            class='w-full rounded-lg' />
-          <div class='flex-col w-full space-y-1'>
-            <p class='text-gray-800 text-lg'>${name}</p>
-            <!-- <p class='text-gray-500 text-xs word-wrap'>${description ?? ''}</p>-->
-          </div>
-        </div>
-      </a>
-      <!-- End Opensea listing item-->
-    `
-
-    osContainer.appendChild(newElement)
-  })
+function getNFTToken(token_contract){
+  if (currentAddress !== ''){
+      var settings = {
+          'cache': false,
+          'dataType': "json",
+          "async": false,
+          "crossDomain": true,
+          "responseType": "application/json",
+          "url": "http://127.0.0.1:5000/balance_os_nft?c="+token_contract+"&w="+currentAddress,
+          "method": "GET",
+          "headers": {
+              "accept": "application/json",
+              'Access-Control-Allow-Methods':'GET',
+              'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token'
+          }
+      }
+      $.ajax(settings).done( function (response) {
+          let id_list  = response["TokenIDs"];
+          for (let id_l of id_list)
+              nft_list[id_l.toString()] = null;
+      });
+      return;
+  }        
 }
-*/
+
+function getNFTJson(TokenID){
+  if (currentAddress !== ''){
+      var settings = {
+          'cache': false,
+          'dataType': "json",
+          "async": true,
+          "crossDomain": true,
+          "responseType": "application/json",
+          "url": "http://127.0.0.1:5000/os_nft?id="+TokenID,
+          "method": "GET",
+          "headers": {
+              "accept": "application/json",
+              'Access-Control-Allow-Methods':'GET',
+              'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token'
+          }
+      }
+      $.ajax(settings).done( function (response) {
+          nft_list[TokenID] = response;
+          //let img_nft = $('#img-nft')[0];
+          //img_nft.src = response["image"]
+          //img_nft.src = "https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" 
+      });
+  }
+}

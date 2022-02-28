@@ -113,9 +113,14 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+                            {{#each this.links}}
+                                <img class="img_pg" id="{{@index}}" src="{{this}}" />
+                            {{/each}}
+                            <!--
                                 <img class="img_pg" src="https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" />
                                 <img class="img_pg" src="https://lh3.googleusercontent.com/B0GftBgw7WuKubkBdfpdVjVNhdYxSr-Kuaw4nxyzfZL-BTwwEfcbBRjWYRI6v4_g2xAEUkE9XMONig9CYcoYgFJe_6iO1xSses93aQ" /> 
                                 <img class="img_pg" src="https://lh3.googleusercontent.com/eQBc7Dc7IqhwUFKC-3AMfdyngpcycKzCoWL58-KqA23vwIJPU4KexlRJu455UQDoVve1ET7wvr-tKgNXBfwIr62SNy-j2wTTWZ3o-g" />
+                            -->                                
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -137,7 +142,8 @@
                     </div>
                 </div>
             </div>
-        </script>        
+        </script>
+
     </body>
 </html>
 

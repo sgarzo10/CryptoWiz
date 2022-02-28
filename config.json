@@ -23,6 +23,7 @@ var config = {
         "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
         "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
     },
+    "token_contract": "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
     "menu": [
         {
             "name":"HOME",

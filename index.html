@@ -109,12 +109,17 @@
         </script>
 
         <script id="nft-template" type="text/x-handlebars-template">
+            <div>
+                <h2>{{this.title}}</h2>
+                <br>
+                <h4>{{this.text}}</h4>
+            </div>
             <div class="row row-cols-1 bar_pg" >
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             {{#each this.links}}
-                                <img class="img_pg" id="{{@index}}" src="{{this}}" />
+                                <img class="img_pg" id="img_pg_{{@index}}" src="{{this}}" onclick="pg_click({{@index}})" />
                             {{/each}}
                             <!--
                                 <img class="img_pg" src="https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" />
@@ -133,17 +138,52 @@
                     </a>
                 </div>
             </div>                            
-            <div class="row row-cols-8">
-                <div id="nft-t" class="card col-md-8 text-center mr-2 ml-2">
-                    <div class="card-body" style="align-self: center;">
-                        <h5 class="card-title">{{this.title}} </h5> 
-                        <p class="card-text">{{this.text}}</p>   
-                        <img src="/img/bannerc.png" alt="banner" class="banner">
-                    </div>
-                </div>
+            <div id="pg-t" class="row row-cols-1 text-center mr-2 ml-2 row_pg">
             </div>
         </script>
 
+        <script id="pg-template" type="text/x-handlebars-template">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img id="img_pg" src="{{this.image}}" class="card-img" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{this.name}}</h5>
+                      <p class="card-text">{{this.description}}</p>
+                      {{#each this.traits}}
+                        <p class="card-text"><small class="text-muted">{{this}}</small></p>          
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-sm">
+                        Name
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="inputName" placeholder="{{this.name}}">
+                    </div>
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-sm">
+                        Description
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="inputDesc" placeholder="{{this.description}}">
+                    </div>
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
+                    </div>
+                </div>                                    
+            </div>            
+        </script>
     </body>
 </html>
 

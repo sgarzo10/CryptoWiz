@@ -74,17 +74,18 @@ async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);
     chain_id = await web3.eth.getChainId();
-    getNFTToken(config[token_contract]);
     if (config[token_contract] === "mainnet")
     {
+      getNFTToken(config[token_contract]);
       for (let nft_id of Object.keys(nft_list))
-        getNFTJson(nft_id);   
+        getNFTJson(nft_id);
     }
     else
-      getNFTJson(0);   
+      getNFTJson("0");
+   
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);
-    getBalance("USDC",config[tokens]["USDC"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" USDC")});
+    getBalance("DAI",config[tokens]["DAI"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" DAI")});
     //Debug
     for (let [key, value] of Object.entries(config[tokens])) {
       getBalance(key, value).then(console.log)

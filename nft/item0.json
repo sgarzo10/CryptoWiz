@@ -8,32 +8,27 @@
         {
             "trait_type": "Stamina",
             "value": 15,
-            "display_type": "number",
-            "max_value": 100
+            "max_value": 50
         },
         {
             "trait_type": "Attack",
             "value": 10,
-            "display_type": "number",
-            "max_value": 100
+            "max_value": 50
         },
         {
             "trait_type": "Defense",
             "value": 15,
-            "display_type": "number",
-            "max_value": 100
+            "max_value": 50
         },
         {
             "trait_type": "Precision",
             "value": 12,
-            "display_type": "number",
-            "max_value": 100
+            "max_value": 50
         },
         {
             "trait_type": "Agility",
             "value": 8,
-            "display_type": "number",
-            "max_value": 100
+            "max_value": 50
         },
         {
             "trait_type": "Vestito SOL - Defense Increase",

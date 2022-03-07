@@ -39,7 +39,7 @@
                 CryptoWiz-TEST
             </a>
             <div class="form-inline">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>0 CWIZt</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>N.D.</button>
                 <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
                 <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton"></button>
             </div>
@@ -143,10 +143,11 @@
         </script>
 
         <script id="pg-template" type="text/x-handlebars-template">
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card m-3 p-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     <img id="img_pg" src="{{this.image}}" class="card-img" alt="...">
+                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body" onclick="set_pg()">SET PG</button>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -159,11 +160,9 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card m-3 p-3" style="max-width: 540px;">
                 <div class="row no-gutters">
-                    <div class="col-sm">
-                        Name
-                    </div>
+                    <div class="col-sm">Name</div>
                     <div class="col-sm">
                         <input type="text" class="form-control" id="inputName" placeholder="{{this.name}}">
                     </div>
@@ -172,9 +171,7 @@
                     </div>
                 </div>
                 <div class="row no-gutters">
-                    <div class="col-sm">
-                        Description
-                    </div>
+                    <div class="col-sm">Description</div>
                     <div class="col-sm">
                         <input type="text" class="form-control" id="inputDesc" placeholder="{{this.description}}">
                     </div>
@@ -182,8 +179,60 @@
                         <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
                     </div>
                 </div>                                    
+                <div class="row no-gutters">
+                    <div class="col-sm">Equip</div>
+                    <div class="col-sm">
+                        <div class="btn-group">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Items
+                            </button>
+                            <div class="dropdown-menu">
+                                <div>
+                                    <img src="img\pg.png" width="20" height="20" class="d-inline" alt="Immagine player">
+                                    <p class="card-text d-inline">ogg1</p>
+                                </div>
+                                <div>
+                                    <img src="img\cpu.png" width="20" height="20" class="d-inline" alt="Immagine player">
+                                    <p class="card-text d-inline">ogg2</p>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
+                    </div>
+                </div>                
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img id="img_item" src="{{this.image}}" class="card-img" style="max-width: 50%;" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        {{#each this.traits}}
+                          <p class="card-text"><small class="text-muted">{{this}}</small></p>          
+                        {{/each}}
+                      </div>
+                    </div>
+                </div>                
             </div>            
         </script>
+
+        <script id="battle-template" type="text/x-handlebars-template">
+            <div id="battle-t" class="card col-md-8 text-center mr-2 ml-2">
+                <div class="card-body" style="align-self: center;">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.text}}</p>
+                    <canvas id="viewport" ></canvas>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <button type="button" class="btn btn-primary btn-lg col-md-2" onclick="test()">PLAY</button>
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
+            </div>
+        </script>            >
     </body>
 </html>
 

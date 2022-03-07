@@ -1,5 +1,6 @@
 var config = {
-    "chain": {
+    "environment": "test",
+    "chain_mainnet": {
         "id": "0x89",
         "name": "Polygon Mainnet",
         "native_currency": {
@@ -10,6 +11,17 @@ var config = {
         "rpc_urls": ["https://rpc-mainnet.maticvigil.com/"],
         "block_explorer_urls": ["https://explorer.matic.network/"]
     },
+    "chain_test": {
+        "id": "0x4",
+        "name": "Rinkeby Testnet",
+        "native_currency": {
+            "name": "ETHRNK",
+            "symbol": "ETHRNK",
+            "decimals": 18
+        },                  
+        "rpc_urls": ["https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"],
+        "block_explorer_urls": ["https://rinkeby.etherscan.io"]
+    },    
     "methods": [
         {
             "constant": true,
@@ -19,11 +31,15 @@ var config = {
             "type": "function"
         }
     ],
-    "tokens": {
+    "tokens_mainnet": {
         "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
         "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
     },
-    "token_contract": "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
+    "tokens_test": {
+        "USDC": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+    },    
+    "token_contract_mainnet": "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
+    "token_contract_test": "0x6a709b054deb0c4b201df12e982b3196fc1bbff1",
     "menu": [
         {
             "name":"HOME",
@@ -49,7 +65,11 @@ var config = {
     "page_nft": {
             "title":"Show CryptoWiz NFT",
             "text":"TEST"
-    },    
+    },   
+    "page_battle": {
+            "title":"Battle with CPU",
+            "text":"Fight to win CryptoWiz Items NFT!"
+    },        
     "page_mint": {
             "title":"Mint new CryptoWiz NFT",
             "text":"Coming Soon..."

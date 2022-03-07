@@ -5,15 +5,19 @@ let dict_players = {};
 let prec_move = 0;
 let time_sleep = 100;
 let move_incr = 0.02;
+let pg_img = "";
+
 
 function init_battle(){
     canvas = $('#viewport')[0];
     canvas.width = screen.width * 0.6;
     canvas.height = screen.height * 0.4;
     context = canvas.getContext('2d');
+    if (pg_img === "") pg_img = 'img\\pg.png';
+
     init_image_for_canvas("background", "img\\base.png", canvas.width, canvas.height, 0, 0);
     sleep(100).then(() => {
-        init_image_for_canvas('player', 'img\\pg.png', canvas.width * 0.1, canvas.height * 0.24, canvas.width * 0.75, canvas.height * 0.65, true);
+        init_image_for_canvas('player', pg_img, canvas.width * 0.1, canvas.height * 0.24, canvas.width * 0.75, canvas.height * 0.65, true);
         init_image_for_canvas('enemy', 'img\\cpu.png', canvas.width * 0.1, canvas.height * 0.24, canvas.width * 0.15, canvas.height * 0.65, true);
         init_image_for_canvas('hit', 'img\\hit.png', canvas.width * 0.05, canvas.height * 0.12, canvas.width * 0.50, canvas.height * 0.70, false, false);
         init_image_for_canvas('fail', 'img\\fail.png', canvas.width * 0.085, canvas.height * 0.045, canvas.width * 0.30, canvas.height * 0.60, false, false);

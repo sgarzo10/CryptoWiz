@@ -27,10 +27,8 @@ def balance_os_nft():
 @cross_origin()
 def os_nft():
     ret = {}
-    if request.args.get('id') != None:
-        ret=jsonify(getOpenSeaNFT(request.args.get('id')))
-    else:        
-        ret=jsonify(getOpenSeaNFT())
+    if request.args.get('id') != None and request.args.get('contract') != None  and request.args.get('chain') != None :
+        ret=jsonify(getOpenSeaNFT(request.args.get('contract'),request.args.get('id'),request.args.get('chain')))
     return ret
 
 @app.route('/balance')

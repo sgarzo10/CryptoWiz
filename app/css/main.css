@@ -48,6 +48,10 @@ body {
   min-width: -webkit-fill-available;
 }
 
+.btn_card_body {
+  max-width: max-content;
+}
+
 /*
  * Card
  */

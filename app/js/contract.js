@@ -12,8 +12,14 @@ let web3 = null;
 let currentAddress = '';
 let balance_token_nativo = null;
 var nft_list = {};
+let chain = "";
+let token_contract = "";
+let tokens = "";
 
 function init_contract(){
+  chain = "chain_" + config["environment"];
+  token_contract = "token_contract_" + config["environment"];
+  tokens = "tokens_" + config["environment"];
   if (! Boolean(window.ethereum)) {
     onboardButton.innerText = 'Click here to install MetaMask!';
     onboardButton.onclick = () => {onboardButton.innerText = 'Onboarding in progress'; onboardButton.disabled = true; onboarding.startOnboarding();};
@@ -34,7 +40,7 @@ async function getBalanceNative() {
   while (wait_resp) {
     try {
       balance = await web3.eth.getBalance(currentAddress);
-      balance_token_nativo = balance / Math.pow(10, config["chain"]['native_currency']['decimals']);
+      balance_token_nativo = balance / Math.pow(10, config[chain]['native_currency']['decimals']);
       wait_resp = false;
     } catch (error) {
       error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
@@ -52,9 +58,10 @@ async function getBalance(token_name, token_address) {
   while (wait_resp) {
     try {
       balance = await contract.methods.balanceOf(currentAddress).call();
-      to_ret = balance / Math.pow(10, config["chain"]['native_currency']['decimals']);
+      to_ret = balance / Math.pow(10, config[chain]['native_currency']['decimals']);
       wait_resp = false;
     } catch (error){
+      console.log(error);
       error_code = JSON.parse("{" + String(error).split("{")[1].split("}")[0] + "}")['code']
       if (error_code != -32005 && error_code != -32000)
         wait_resp = false;
@@ -67,14 +74,19 @@ async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);
     chain_id = await web3.eth.getChainId();
-    getNFTToken(config["token_contract"]);
-    for (let nft_id of Object.keys(nft_list))
-      getNFTJson(nft_id);   
+    getNFTToken(config[token_contract]);
+    if (config[token_contract] === "mainnet")
+    {
+      for (let nft_id of Object.keys(nft_list))
+        getNFTJson(nft_id);   
+    }
+    else
+      getNFTJson(0);   
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);
-    getBalance("CWIZt",config["tokens"]["CWIZt"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" CWIZt")});
+    getBalance("USDC",config[tokens]["USDC"]).then((val)=>{getBalanceButton.innerText = val.toString().concat(" USDC")});
     //Debug
-    for (let [key, value] of Object.entries(config["tokens"])) {
+    for (let [key, value] of Object.entries(config[tokens])) {
       getBalance(key, value).then(console.log)
     }
   }
@@ -82,17 +94,17 @@ async function checkConnect(accounts){
 }
 
 function handleChainChanged (chainId) {
-  button_text = config["chain"]['native_currency']['name']
-  if (chainId != config["chain"]['id']) {
-    button_text = 'SWITCH TO ' + config["chain"]['native_currency']['name'];
+  button_text = config[chain]['native_currency']['name']
+  if (chainId != config[chain]['id']) {
+    button_text = 'SWITCH TO ' + config[chain]['native_currency']['name'];
     web3.currentProvider.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: config["chain"]['id'] }],
+      params: [{ chainId: config[chain]['id'] }],
     }).catch((err) => {
       if (err.code === 4902) {
           web3.currentProvider.request({
             method: 'wallet_addEthereumChain',
-            params: [config["chain"]],
+            params: [config[chain]],
           }).catch((addError) => {console.log(addError)});
       }
     });
@@ -140,7 +152,7 @@ function getNFTJson(TokenID){
           "async": true,
           "crossDomain": true,
           "responseType": "application/json",
-          "url": "http://127.0.0.1:5000/os_nft?id="+TokenID,
+          "url": "http://127.0.0.1:5000/os_nft?id="+TokenID+"&contract="+config[token_contract]+"&chain="+config["environment"],
           "method": "GET",
           "headers": {
               "accept": "application/json",

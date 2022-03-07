@@ -8,7 +8,7 @@ header = {
 
 def router_Scan(wallet,chain=''):
     conf_file = open('config.json')
-    router_EVM=load(conf_file)
+    router_EVM=load(conf_file)["router_EVM"]
     msg = {'response':[]}
     if wallet[:2] == '0x':
         for k in router_EVM:
@@ -18,8 +18,10 @@ def router_Scan(wallet,chain=''):
                 msg['response'].append(EVM_Scan(wallet, k, router_EVM[k]['coin'], router_EVM[k]['token_list'], url_s, url_sToken))
     return msg
 
-def getOpenSeaNFT(TokenID='86878125432023963361188205560853538656658503492234669844754453271333010669569'):
-    url = f"https://api.opensea.io/api/v2/metadata/matic/0x2953399124F0cBB46d2CbACD8A89cF0599974963/{TokenID}"
+def getOpenSeaNFT(Contract,TokenID,chain):
+    conf_file = open('config.json')
+    nft_api=load(conf_file)["nft_api"]["os_"+chain]
+    url = nft_api.replace("[contract]",Contract).replace("[id]",TokenID)
     res = urlopen(Request(url, headers=header)).read()
     return loads(res)
 

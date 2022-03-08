@@ -3,7 +3,8 @@
     "description": "CryptoWiz Item 0", 
     "external_link": null, 
     "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
-    "name": "CryptoWiz - Item #0000", 
+    "name": "CryptoWiz - Item #0000",
+    "test": "test",
     "traits": [
         {
             "trait_type": "Stamina",

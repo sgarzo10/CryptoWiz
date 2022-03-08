@@ -1,3 +1,18 @@
+Handlebars.registerHelper('if_eq', function(a, b, opts) {
+    if (a === b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+});
+
+Handlebars.registerHelper('if_null', function(a, opts) {
+    if (a == null) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+});
 
 $(document).ready(() => {
     init_contract();
@@ -9,8 +24,7 @@ $(document).ready(() => {
     feather.replace();
     menu_click('HOME')
     return;
-});    
-
+});
 
 function set_pg (pg_index)
 {
@@ -52,18 +66,34 @@ function pg_click(index)
     let div_pg = $('#pg-t');
     let template = Handlebars.compile($("#pg-template")[0].innerHTML);
     let pg_traits = [];
-    //
+
     for (let trait of Object.values(nft_list)[index]["traits"])
     {
-        let pg_text = "";
+        let boost = {
+            "name": null,
+            "value": "",
+            "display_type": null
+        };
+
         for (let [key, value] of Object.entries(trait))
         {
-            if ( key === "trait_type") pg_text = value+": ";
-            if ( key === "value") pg_text = pg_text+value;
+            if ( key == "trait_type")
+            {
+                if (value.indexOf("-") > 0)
+                {
+                    boost["name"]=value.split("-")[0];
+                    boost["value"]=value.split("-")[1]+" ";
+                }
+                else
+                    boost["name"]=value;
+            }
+            if ( key == "value") boost["value"] = boost["value"] + value;
+            if ( key == "display_type") boost["display_type"] = value;
         }
-        pg_traits.push(pg_text);
+
+        if (boost["name"] !== null) pg_traits.push(boost);
     }
-    //
+
     let p_struct = {
         "name": Object.values(nft_list)[index]["name"],
         "image": Object.values(nft_list)[index]["image"],

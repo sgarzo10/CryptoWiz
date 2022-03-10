@@ -174,50 +174,57 @@
                 </div>
             </div>
             <div class="card m-3 p-3" style="max-width: 540px;">
-            <ul class="nav p-2 mb-1">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Bio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Equip</a>
-                </li>
-                </ul>                
-                <div class="row no-gutters">
-                    <div class="col-sm">Name</div>
-                    <div class="col-sm">
-                        <input type="text" class="form-control" id="inputName" placeholder="{{this.name}}">
-                    </div>
-                    <div class="col-sm">
-                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>
-                    </div>
+                <ul class="nav p-0 mb-2">
+                    {{#each this.nav}}
+                    <li class="nav-item">
+                        <a class="nav-link active pt-0" onclick="nav_click('{{this}}')">{{this}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+                <div id="item-container" class="card-body" style="align-self: center;">
                 </div>
-                <div class="row no-gutters">
-                    <div class="col-sm">Description</div>
-                    <div class="col-sm">
-                        <input type="text" class="form-control" id="inputDesc" placeholder="{{this.description}}">
+            </div>
+        </script>
+
+        <script id="bio-template" type="text/x-handlebars-template">
+            <div class="row no-gutters">
+                <div class="col-sm">Name</div>
+                <div class="col-sm">
+                    <input type="text" class="form-control" id="inputName" placeholder="{{this.name}}">
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-sm">Description</div>
+                <div class="col-sm">
+                    <input type="text" class="form-control" id="inputDesc" placeholder="{{this.description}}">
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
+                </div>
+            </div>
+        </script>
+
+        <script id="equip-template" type="text/x-handlebars-template">
+            <div class="row no-gutters" style="justify-content: center;">
+                <span class="border rounded border-primary">
+                    <div class="container bg-light text-dark">
+                        <img id="img_pg" src="{{this.image}}" class="img_item " alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
                     </div>
-                    <div class="col-sm">
-                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
-                    </div>
-                </div>                                    
-                <div class="row no-gutters" style="justify-content: center;">
-                    <span class="border rounded border-primary">
-                        <div class="container bg-light text-dark">
-                            <img id="img_pg" src="{{this.image}}" class="img_item " alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        </div>
-                    </span>
-                    </div>
-                    <div class="col-sm">
-                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
-                    </div>
-                </div>                
-            </div>            
+                </span>
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
+                </div>
+            </div>                
         </script>
 
         <script id="battle-template" type="text/x-handlebars-template">

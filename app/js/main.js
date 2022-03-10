@@ -106,13 +106,21 @@ function pg_click(index)
         "image": Object.values(nft_list)[index]["image"],
         "description": Object.values(nft_list)[index]["description"],
         "traits": pg_traits,
-        "boosts": pg_boosts
+        "boosts": pg_boosts,
+        "nav": config["nav"]
     };
     div_pg.html(template(p_struct));
     pg_img = Object.values(nft_list)[index]["image"];
     return;
 }
 
+function nav_click(nav_name)
+{
+    let item_container = $('#item-container');
+    let template = Handlebars.compile($("#".concat(nav_name.toLowerCase()).concat("-template"))[0].innerHTML);
+    item_container.html(template());
+    return;
+}
 
 
   

@@ -73,5 +73,6 @@ var config = {
     "page_mint": {
             "title":"Mint new CryptoWiz NFT",
             "text":"Coming Soon..."
-    }    
+    },
+    "nav": ["Bio","Equip"]
 }

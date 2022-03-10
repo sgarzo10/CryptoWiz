@@ -32,27 +32,27 @@
             "max_value": 50
         },
         {
-            "trait_type": "Vestito SOL - Defense Increase",
+            "trait_type": "Vestito SOL - Defense +",
             "display_type": "boost_number",
             "value": 10
         },
         {
-            "trait_type": "Vestito SOL - Stammina Increase",
+            "trait_type": "Vestito SOL - Stammina +",
             "display_type": "boost_number",
             "value": 10
         },
         {
-            "trait_type": "Bastone Fuoco - Attack Increase",
+            "trait_type": "Bastone Fuoco - Attack +",
             "display_type": "boost_number",
             "value": 10
         },
         {
-            "trait_type": "Cappello SOL - Precison Increase",
+            "trait_type": "Cappello SOL - Precison +",
             "display_type": "boost_number",
             "value": 7
         },
         {
-            "trait_type": "Scarpe BASE - Agility Increase",
+            "trait_type": "Scarpe BASE - Agility +",
             "display_type": "boost_number",
             "value": 3
         }

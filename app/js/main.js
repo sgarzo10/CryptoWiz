@@ -66,6 +66,7 @@ function pg_click(index)
     let div_pg = $('#pg-t');
     let template = Handlebars.compile($("#pg-template")[0].innerHTML);
     let pg_traits = [];
+    let pg_boosts = [];
 
     for (let trait of Object.values(nft_list)[index]["traits"])
     {
@@ -91,19 +92,27 @@ function pg_click(index)
             if ( key == "display_type") boost["display_type"] = value;
         }
 
-        if (boost["name"] !== null) pg_traits.push(boost);
+        if (boost["name"] !== null)
+        {
+            if (key == "display_type") and (value == null)
+                pg_traits.push(boost);
+            if (key == "display_type") and (value == "boost_number")
+                pg_boosts.push(boost);                
+        } 
     }
 
     let p_struct = {
         "name": Object.values(nft_list)[index]["name"],
         "image": Object.values(nft_list)[index]["image"],
         "description": Object.values(nft_list)[index]["description"],
-        "traits": pg_traits
+        "traits": pg_traits,
+        "boosts": pg_boosts
     };
     div_pg.html(template(p_struct));
     pg_img = Object.values(nft_list)[index]["image"];
     return;
 }
+
 
 
   

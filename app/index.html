@@ -141,34 +141,47 @@
 
         <script id="pg-template" type="text/x-handlebars-template">
             <div class="card m-3 p-3" style="max-width: 540px;">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">{{this.description}}</p>
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     <img id="img_pg" src="{{this.image}}" class="card-img" alt="...">
                     <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body" onclick="set_pg()">SET PG</button>
                   </div>
                   <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{this.name}}</h5>
-                      <p class="card-text">{{this.description}}</p>
-                      {{#each this.traits}}
-                        {{#if_eq this.display_type null}}
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
-                        </div>
-                        <p><small class="text-muted">{{this.name}}</small></p>                        
-                        {{/if_eq}}                      
-                        {{#if_eq this.display_type 'boost_number'}}
-                        <button class="btn btn-sm btn-primary" disabled>
-                            <p class="m-0">{{this.name}}</p>
-                            <p class="m-0"><small>{{this.value}}</small></p>
-                        </button>
-                        {{/if_eq}}
-                      {{/each}}
+                    <div class="card-body pb-0">
+                        {{#each this.traits}}
+                            {{#if_eq this.display_type null}}
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                            </div>
+                            <p><small class="text-muted">{{this.name}}</small></p>                        
+                            {{/if_eq}}                      
+                        {{/each}}
                     </div>
                   </div>
                 </div>
+                <p class="card-text mb-0 p-0">Equipments</p>                
+                <div class="row no-gutters">
+                    {{#each this.boosts}}
+                    {{#if_eq this.display_type 'boost_number'}}
+                    <button class="btn btn-sm btn-primary" disabled>
+                        <p class="m-0">{{this.name}}</p>
+                        <p class="m-0"><small>{{this.value}}</small></p>
+                    </button>
+                    {{/if_eq}}
+                    {{/each}}
+                </div>
             </div>
             <div class="card m-3 p-3" style="max-width: 540px;">
+            <ul class="nav p-2 mb-1">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Bio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Equip</a>
+                </li>
+                </ul>                
                 <div class="row no-gutters">
                     <div class="col-sm">Name</div>
                     <div class="col-sm">
@@ -187,41 +200,21 @@
                         <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
                     </div>
                 </div>                                    
-                <div class="row no-gutters">
-                    <div class="col-sm">Equip</div>
-                    <div class="col-sm">
-                        <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Items
-                            </button>
-                            <div class="dropdown-menu">
-                                <div>
-                                    <img src="img\pg.png" width="20" height="20" class="d-inline" alt="Immagine player">
-                                    <p class="card-text d-inline">ogg1</p>
-                                </div>
-                                <div>
-                                    <img src="img\cpu.png" width="20" height="20" class="d-inline" alt="Immagine player">
-                                    <p class="card-text d-inline">ogg2</p>
-                                </div>                                
-                            </div>
+                <div class="row no-gutters" style="justify-content: center;">
+                    <span class="border rounded border-primary">
+                        <div class="container bg-light text-dark">
+                            <img id="img_pg" src="{{this.image}}" class="img_item " alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                            <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
                         </div>
+                    </span>
                     </div>
                     <div class="col-sm">
                         <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
-                    </div>
-                </div>                
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                      <img id="img_item" src="{{this.image}}" class="card-img" style="max-width: 50%;" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">{{this.name}}</h5>
-                        <p class="card-text">{{this.description}}</p>
-                        {{#each this.traits}}
-                          <p class="card-text"><small class="text-muted">{{this}}</small></p>          
-                        {{/each}}
-                      </div>
                     </div>
                 </div>                
             </div>            
@@ -240,7 +233,7 @@
                     </div>
                 </div>
             </div>
-        </script>            >
+        </script>
     </body>
 </html>
 

@@ -4,5 +4,5 @@
 /js/.DS_Store
 /img/.DS_Store
 /test/*
-/apiserver/config.json
 /apiserver/__pycache__
+/apiserver/log/server.log

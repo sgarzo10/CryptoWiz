@@ -1,48 +1,87 @@
-#!/usr/bin/env python
-#https://testnets-api.opensea.io/api/v2/metadata/rinkeby/0x6a709b054deb0c4b201df12e982b3196fc1bbff1/0
-#http://127.0.0.1:5000/balance?w=0xc01346c420669cA0a2580Ab3a92c65E295C3F121
-#http://127.0.0.1:5000/balance_os_nft?c=0x2953399124F0cBB46d2CbACD8A89cF0599974963&w=0x49b363595ecDB335BEa64E4850472d9eF0609c99
-#http://127.0.0.1:5000/os_nft?id=86878125432023963361188205560853538656658503492234669844754453276830568808449
-
-from EVMScan import router_Scan, getOpenSeaNFT, getNFTBalance
+from logic import get_nft_detail, get_nft_ids
+from utility import Config, validate_format
+from json import loads
 from flask import Flask, request, jsonify
-from flask_cors import *
+from flask_cors import CORS, cross_origin
+from logging import basicConfig, INFO, info
+
+# http://127.0.0.1:5000/nft_ids?contract=0x2953399124F0cBB46d2CbACD8A89cF0599974963&wallet=0x49b363595ecDB335BEa64E4850472d9eF0609c99&chain=matic
+# http://127.0.0.1:5000/nft_detail?contract=0x2953399124F0cBB46d2CbACD8A89cF0599974963&id=86878125432023963361188205560853538656658503492234669844754453276830568808449&chain=matic
+# http://127.0.0.1:5000/nft_detail?contract=0x6a709b054deb0c4b201df12e982b3196fc1bbff1&id=0&chain=rinkeby
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def hello():
-    response={'response': 'Internal API HTTP Server Ver. 0.1'}
-    return jsonify(response)
 
-@app.route('/balance_os_nft')
+@app.route('/nft_ids', methods=["POST"])
 @cross_origin()
-def balance_os_nft():
-    ret = {}
-    if request.args.get('c') != None and request.args.get('w') != None :
-        ret = getNFTBalance(request.args.get('c'),request.args.get('w'))
+def nft_ids():
+    body = request.data.decode()
+    info(body)
+    ret = check_params_nft_ids(body)
+    if ret['state']:
+        ret = get_nft_ids(loads(body))
     return ret
 
-@app.route('/os_nft')
-@cross_origin()
-def os_nft():
-    ret = {}
-    if request.args.get('id') != None and request.args.get('contract') != None  and request.args.get('chain') != None :
-        ret=jsonify(getOpenSeaNFT(request.args.get('contract'),request.args.get('id'),request.args.get('chain')))
-    return ret
 
-@app.route('/balance')
-def balance():
-    ret = {}
-    user = request.args.get('w')
-    chain = request.args.get('c')
-    if user != None:
-        if chain != None:
-            ret = jsonify(router_Scan(user,chain)) 
+def check_params_nft_ids(body):
+    to_ret = {
+        'state': False
+    }
+    if body != "" and validate_format(body):
+        body = loads(body)
+        if 'contract' in body and body['contract'] != "":
+            if 'wallet' in body and body['wallet'] != "":
+                if 'chain' in body and body['chain'] in Config.settings["chains"].keys():
+                    to_ret['state'] = True
+                else:
+                    to_ret[
+                        'response'] = f"The parameter chain is mandatory, possible values: {', '.join(list(Config.settings['chains'].keys()))}"
+            else:
+                to_ret['response'] = "The parameter wallet is mandatory"
         else:
-            ret = jsonify(router_Scan(user)) 
+            to_ret['response'] = "The parameter contract is mandatory"
+    else:
+        to_ret['response'] = "Body is null or is not JSON format"
+    return to_ret
+
+
+@app.route('/nft_detail', methods=["POST"])
+@cross_origin()
+def nft_detail():
+    body = request.data.decode()
+    info(body)
+    ret = check_params_nft_detail(body)
+    if ret['state']:
+        ret = jsonify(get_nft_detail(loads(body)))
     return ret
+
+
+def check_params_nft_detail(body):
+    to_ret = {
+        'state': False
+    }
+    if body != "" and validate_format(body):
+        body = loads(body)
+        if 'contract' in body and body['contract'] != "":
+            if 'id' in body and body['id'] != "":
+                if 'chain' in body and body['chain'] in Config.settings["chains"].keys():
+                    to_ret['state'] = True
+                else:
+                    to_ret['response'] = f"The parameter chain is mandatory, possible values: {', '.join(list(Config.settings['chains'].keys()))}"
+            else:
+                to_ret['response'] = "The parameter id is mandatory"
+        else:
+            to_ret['response'] = "The parameter contract is mandatory"
+    else:
+        to_ret['response'] = "Body is null or is not JSON format"
+    return to_ret
+
 
 if __name__ == '__main__':
-    app.run(debug=True)    
+    Config().reload()
+    basicConfig(
+        filename=Config.settings['log']['path_file'],
+        format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s",
+        level=INFO)
+    app.run()

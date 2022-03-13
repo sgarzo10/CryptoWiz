@@ -56,8 +56,8 @@
                     </nav>
                 </div>
                 <div id="main" class="card card-main col-md-8 text-center mr-2 ml-2">
-                    <!-- TEMPLATE -->
-                    <canvas id="viewport" class="d-none" ></canvas>
+                    <!-- TEMPLATE                     <canvas id="viewport" class="d-none" ></canvas>-->
+
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -86,8 +86,16 @@
                         <h5 class="modal-title">BATTLE</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
-                    <div id="modal-battle-detail" class=" modal-body card card-mint m-3 p-3">
+                    <div id="modal-battle-detail" class="modal-body card card-mint m-3 p-3">
                     </div>
+                    <div id="modal-battle-play" class="card-body d-none" style="align-self: center;">
+                        <canvas id="viewport" ></canvas>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <button type="button" class="btn btn-primary btn-lg col-md-2" onclick="test()">PLAY</button>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>                    
                     <div class="modal-footer"></div>
                 </div>
             </div>
@@ -315,6 +323,7 @@
 
         <script id="modal-battle-template" type="text/x-handlebars-template">            
             <div class="row no-gutters">
+                
                 <div class="col-md-4 text-center">
                     <div class="col-md-12">
                         <h5 class="card-title text-center">{{this.cpu.name}}</h5>
@@ -336,6 +345,7 @@
                         </div>                                        
                     </div>
                 </div>
+
                 <div class="col-md-4 text-center">
                     <h1 class="m-2 text-center">VS</h1>
                     <div class="card-body pb-0">
@@ -348,7 +358,7 @@
                         <h5 class="card-title text-center">EXTRA REQUIRED</h5>
                         <p class="card-text text-center">Welcome Badge NFT</p>                        
                     </div>
-                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body mt-4" onclick="">START BATTLE</button>
+                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body mt-4" onclick="show_battle()">START BATTLE</button>
                 </div>
                 
                 <div class="col-md-4 text-center">
@@ -371,7 +381,7 @@
                         </div>                                        
                     </div>
                 </div>                    
-            </div>
+            </div>            
         </script>  
 
     </body>

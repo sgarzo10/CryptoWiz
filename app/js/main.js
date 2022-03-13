@@ -25,6 +25,12 @@ $(document).ready(() => {
     $("#modal-mint").on('hide.bs.modal', function(){
         $("#modal-mint-detail").html("");
     });
+    $("#modal-battle").on('hide.bs.modal', function(){
+        var d_dett = document.getElementById("modal-battle-detail");
+        d_dett.classList.remove("d-none"); 
+        var d_battle = document.getElementById("modal-battle-play");
+        d_battle.classList.add("d-none");
+    });    
     menu_click('HOME')
     return;
 });
@@ -57,7 +63,6 @@ function menu_click(menu_name)
     else if (menu_name === "BATTLE"){
         p_struct["battles"] = config["battles"];
         col_main.html(template(p_struct));
-        //init_battle();
     }
     else if (menu_name === "MINT"){
         p_struct["mints"] = config["mints"];
@@ -175,4 +180,12 @@ function modal_battle(){
     return;
 }
 
-  
+
+function show_battle()
+{
+    var d_dett = document.getElementById("modal-battle-detail");
+    d_dett.classList.add("d-none");
+    var d_battle = document.getElementById("modal-battle-play");
+    d_battle.classList.remove("d-none"); 
+}
+ 

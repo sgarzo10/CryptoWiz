@@ -123,17 +123,24 @@ function test(){
         {"id": "enemy", "where_move":"l"}
     ]);  
     update_item("hit", false, 0);
-    move_items(30, [
+    move_items(10, [
         {"id": "enemy", "where_move":"r"}
-    ]);    
+    ]);
+
     update_item("hit", true, "dict_image_canvas['enemy'].position_x + dict_image_canvas['enemy'].width");
-    move_items(27, [
+    move_items(40, [
         {"id": "hit", "where_move":"r"}
     ]);
     update_item("hit", false, 0);
-    move_items(45, [
+    move_items(10, [
+        {"id": "hit", "where_move":"r"},
+        {"id": "player", "where_move":"r"}
+    ]);
+    update_item("hit", false, 0);
+    move_items(10, [
         {"id": "player", "where_move":"l"}
-    ]); 
+    ]);    
+
     prec_move = 0;
     return;
 }

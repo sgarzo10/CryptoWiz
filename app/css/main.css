@@ -114,6 +114,9 @@ body {
   align-items: center;
 }
 
+.modal-xl {
+    max-width: max-content;
+}
 
 .box-anim-mint {
   background-color: transparent;

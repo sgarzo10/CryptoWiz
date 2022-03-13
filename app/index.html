@@ -55,25 +55,32 @@
                         </div>
                     </nav>
                 </div>
-                <div id="main" class="card col-md-8 text-center mr-2 ml-2">
-                    <!-- TEMPLATE -->                    
-                    <div id="battle-t" class="card col-md-8 text-center mr-2 ml-2 d-none">
-                        <div class="card-body" style="align-self: center;">
-                            <h5 class="card-title">Battle against CryptoWiz CPU</h5>
-                            <p class="card-text">Battle against CPU to win new NFT!</p>
-                            <canvas id="viewport" ></canvas>
-                            <div class="row">
-                                <div class="col-md-5"></div>
-                                <button type="button" class="btn btn-primary btn-lg col-md-2" onclick="test()">PLAY</button>
-                                <div class="col-md-5"></div>
-                            </div>
-                        </div>
-                    </div>                    
+                <div id="main" class="card card-main col-md-8 text-center mr-2 ml-2">
+                    <!-- TEMPLATE -->
+                    <canvas id="viewport" class="d-none" ></canvas>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </div>
-        
+
+        <!-- MODALS -->
+        <div class="modal fade" id="modal-mint">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">MINT PG</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modal-mint-detail" class="card m-3 p-3 box-anim-mint" style="max-width: 540px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCRIPTS -->
         <script id="menu-template" type="text/x-handlebars-template">
             {{#each this}}
                 <li class="nav-item">
@@ -86,25 +93,61 @@
         </script>
 
         <script id="home-template" type="text/x-handlebars-template">
-            <div id="home-t" class="card col-md-8 text-center mr-2 ml-2">
-                <div class="card-body" style="align-self: center;">
-                    <h5 class="card-title">{{this.title}} </h5> 
-                    <p class="card-text">{{this.text}}</p>   
-                    <img src="/img/banner.png" alt="banner" class="banner">
-                </div>
+            <div id="home-t" class="card col-md-8 text-center mr-2 ml-2" style="align-self: center;">
+                <h5 class="card-title">{{this.title}} </h5> 
+                <p class="card-text">{{this.text}}</p>   
+                <img src="/img/banner.png" alt="banner" class="banner">
             </div>
         </script>
 
         <script id="mint-template" type="text/x-handlebars-template">
-            <div id="mint-t" class="card col-md-8 text-center mr-2 ml-2">
-                <div class="card-body" style="align-self: center;">
-                    <h5 class="card-title">{{this.title}} </h5> 
-                    <p class="card-text">{{this.text}}</p>   
-                    <img src="/img/bannerc.png" alt="banner" class="banner">
+            <h5 class="card-title">{{this.title}} </h5> 
+            <p class="card-text">{{this.text}}</p>   
+            {{#each this.mints}}
+            <div class="media col-md-8 position-relative">
+                <img src="{{this.img}}" class="mr-3" alt="...">
+                <div class="media-body">
+                  <h5 class="mt-0">{{this.title}}</h5>
+                  <p>{{this.desc}}</p>
                 </div>
+                <button type="button" class="btn btn-primary" onclick="pre_modal_mint()">Mint</button>
             </div>
+            {{/each}}      
         </script>
 
+        <script id="modal-mint-template" type="text/x-handlebars-template">            
+            <h5 class="card-title text-center">{{this.name}}</h5>
+            <p class="card-text text-center">{{this.description}}</p>
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img id="img_pg_minted" src="{{this.image}}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body pb-0">
+                        {{#each this.traits}}
+                        {{#if_eq this.display_type null}}
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                        </div>
+                        <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
+                        {{/if_eq}}
+                        {{/each}}
+                    </div>                                        
+                </div>
+            </div>
+            <p class="card-text mb-0 p-0 text-center">Equipments</p>                
+            <div class="row no-gutters justify-content-center">
+                {{#each this.traits}}
+                {{#if_eq this.display_type 'boost_number'}}
+                <button class="btn btn-sm btn-primary" disabled>
+                    <p class="m-0">{{this.trait_type}}</p>
+                    <p class="m-0"><small>{{this.value}}</small></p>
+                </button>
+                {{/if_eq}}
+                {{/each}}
+            </div>
+        </script>
+        
         <script id="nft-template" type="text/x-handlebars-template">
             <div>
                 <h2>{{this.title}}</h2>

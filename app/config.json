@@ -71,8 +71,110 @@ var config = {
             "text":"Fight to win CryptoWiz Items NFT!"
     },        
     "page_mint": {
-            "title":"Mint new CryptoWiz NFT",
-            "text":"Coming Soon..."
+            "title":"Mint CryptoWiz NFT",
+            "text":"Mint a new CryptoWiz PG or ITEM"
     },
-    "nav": ["Bio","Equip"]
+    "nav": ["Bio","Equip"],
+    "mints": [
+        {
+            "title":"MINT PG",
+            "desc":"Generate a new base CryptoWiz PG NFT",
+            "img": "/img/mint_pg.png"
+        },
+        {
+            "title":"MINT ITEM",
+            "desc":"Generate a new CryptoWiz ITEM NFT",
+            "img": "/img/mint_item.png"
+        }        
+    ],
+    "pg_0": {
+        "animation_url": null, 
+        "description": "CryptoWiz PG 0", 
+        "external_link": null, 
+        "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
+        "name": "CryptoWiz - PG #0000",
+        "test": "test",
+        "traits": [
+            {
+                "trait_type": "Stamina",
+                "display_type": null,
+                "value": 15,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Attack",
+                "display_type": null,
+                "value": 10,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Defense",
+                "display_type": null,
+                "value": 15,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Precision",
+                "display_type": null,
+                "value": 12,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Agility",
+                "display_type": null,
+                "value": 8,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Vestito SOL - Defense +",
+                "display_type": "boost_number",
+                "value": 10
+            }
+        ]
+    },
+    "pg_1": {
+        "animation_url": null, 
+        "description": "CryptoWiz PG 0", 
+        "external_link": null, 
+        "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
+        "name": "CryptoWiz - PG #0000",
+        "test": "test",
+        "traits": [
+            {
+                "trait_type": "Stamina",
+                "display_type": null,
+                "value": 15,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Attack",
+                "display_type": null,
+                "value": 10,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Defense",
+                "display_type": null,
+                "value": 15,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Precision",
+                "display_type": null,
+                "value": 12,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Agility",
+                "display_type": null,
+                "value": 8,
+                "max_value": 50
+            },
+            {
+                "trait_type": "Vestito SOL - Defense +",
+                "display_type": "boost_number",
+                "value": 10
+            }
+        ]
+    }
 }

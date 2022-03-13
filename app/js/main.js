@@ -22,6 +22,9 @@ $(document).ready(() => {
     let menu_list = config.menu;
     col_menu.html(template(menu_list));
     feather.replace();
+    $("#modal-mint").on('hide.bs.modal', function(){
+        $("#modal-mint-detail").html("");
+    });
     menu_click('HOME')
     return;
 });
@@ -55,6 +58,11 @@ function menu_click(menu_name)
         col_main.html(template(p_struct));
         init_battle();
     }
+    else if (menu_name === "MINT"){
+        p_struct["mints"] = config["mints"];
+        col_main.html(template(p_struct));
+
+    }    
     else
         col_main.html(template(p_struct));
 
@@ -119,6 +127,33 @@ function nav_click(nav_name)
     let item_container = $('#item-container');
     let template = Handlebars.compile($("#".concat(nav_name.toLowerCase()).concat("-template"))[0].innerHTML);
     item_container.html(template());
+    return;
+}
+
+
+function pre_modal_mint(){
+    $("#modal-mint").modal();
+    setTimeout(modal_mint, 4000);
+}
+
+function modal_mint(){
+    let modal_f = $('#modal-mint-detail');
+    let template = Handlebars.compile($("#modal-mint-template")[0].innerHTML);
+    let i = 0;
+    for (let val of Object.values(config["pg_0"]["traits"]))
+    {
+        let v_trait_type = val["trait_type"];
+        let v_value = val["value"]
+        if (v_trait_type.indexOf("-") > 0)
+        {
+            config["pg_0"]["traits"][i]["trait_type"] = v_trait_type.split("-")[0];
+            config["pg_0"]["traits"][i]["value"] = v_trait_type.split("-")[1]+" "+ v_value.toString();
+        }
+        else
+            config["pg_0"]["traits"][i]["trait_type"] = v_trait_type;
+        i++;
+    }
+    modal_f.html(template(config["pg_0"]));
     return;
 }
 

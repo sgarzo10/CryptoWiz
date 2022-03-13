@@ -7,6 +7,8 @@ body {
   background: linear-gradient(to right, #4e1385, rgba(75, 185, 236, 0.8));
 }
 
+
+
 .small, small {
   font-size: 85%;
 }
@@ -48,6 +50,17 @@ body {
   width: 5%;
 }
 
+.img_mint {
+  background: transparent;
+  width: 80%;
+}
+
+.col-row-mint
+{
+  text-align: -webkit-left;
+  align-self: center;
+}
+
 .img_sel{
   float: left;
 }
@@ -59,6 +72,10 @@ body {
 
 .btn_card_body {
   max-width: max-content;
+}
+
+.card-main{
+  height: max-content;
 }
 
 .btn.btn-sm {
@@ -75,11 +92,66 @@ body {
   max-height: -webkit-fill-available;
 }
 
+
+.media {
+  margin-bottom: 1.5rem;
+  margin-right: 2%;
+  border-color: #edf2f9;
+  box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #edf2f9;
+  border-radius: .5rem;
+  align-items: center;
+}
+
+.box-anim-mint-std {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation-name: anim-mint;
+  animation-duration: 4s;
+}
+
+.box-anim-mint {
+  background-color: red;
+  position: relative;
+  animation-name: anim-mint;
+  animation-duration: 4s;
+}
+
+@keyframes anim-mint {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:0px; top:-10px;}
+  50%  {background-color:blue; left:0px; top:-20px;}
+  75%  {background-color:green; left:0px; top:-10px;}
+  100% {background-color:transparent; left:0px; top:0px;}
+}
+
+
 /*
  * Card
  */
 
 .card {
+  margin-bottom: 1.5rem;
+  margin-right: 2%;
+  border-color: #edf2f9;
+  box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #edf2f9;
+  border-radius: .5rem;
+  height: fit-content;
+}
+
+.card-std {
   margin-bottom: 1.5rem;
   margin-right: 2%;
   border-color: #edf2f9;

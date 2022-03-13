@@ -8,26 +8,31 @@
     "traits": [
         {
             "trait_type": "Stamina",
+            "display_type": null,
             "value": 15,
             "max_value": 50
         },
         {
             "trait_type": "Attack",
+            "display_type": null,
             "value": 10,
             "max_value": 50
         },
         {
             "trait_type": "Defense",
+            "display_type": null,
             "value": 15,
             "max_value": 50
         },
         {
             "trait_type": "Precision",
+            "display_type": null,
             "value": 12,
             "max_value": 50
         },
         {
             "trait_type": "Agility",
+            "display_type": null,
             "value": 8,
             "max_value": 50
         },

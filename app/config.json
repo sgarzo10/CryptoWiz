@@ -87,6 +87,18 @@ var config = {
             "img": "/img/mint_item.png"
         }        
     ],
+    "battles": [
+        {
+            "title":"BATTLE AGAINST MONSTER",
+            "desc":"Fight to win a CryptoWiz NFT Item!",
+            "img": "/img/battle_nft.png"
+        },
+        {
+            "title":"BATTLE AGAINST MASTER",
+            "desc":"Fight to win $MATIC!",
+            "img": "/img/battle_cash.png"
+        }        
+    ],    
     "pg_0": {
         "animation_url": null, 
         "description": "CryptoWiz PG 0", 
@@ -134,40 +146,40 @@ var config = {
     },
     "pg_1": {
         "animation_url": null, 
-        "description": "CryptoWiz PG 0", 
+        "description": "CryptoWiz PG 1", 
         "external_link": null, 
         "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
-        "name": "CryptoWiz - PG #0000",
+        "name": "CryptoWiz - PG #0001",
         "test": "test",
         "traits": [
             {
                 "trait_type": "Stamina",
                 "display_type": null,
-                "value": 15,
+                "value": 30,
                 "max_value": 50
             },
             {
                 "trait_type": "Attack",
                 "display_type": null,
-                "value": 10,
+                "value": 30,
                 "max_value": 50
             },
             {
                 "trait_type": "Defense",
                 "display_type": null,
-                "value": 15,
+                "value": 30,
                 "max_value": 50
             },
             {
                 "trait_type": "Precision",
                 "display_type": null,
-                "value": 12,
+                "value": 30,
                 "max_value": 50
             },
             {
                 "trait_type": "Agility",
                 "display_type": null,
-                "value": 8,
+                "value": 30,
                 "max_value": 50
             },
             {

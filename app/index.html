@@ -68,7 +68,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">MINT PG</h5>
+                        <h5 class="modal-title">MINT PG</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div id="modal-mint-detail" class=" modal-body card card-mint m-3 p-3 justify-content-center box-anim-mint">
@@ -78,6 +78,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade bd-example-modal-xl" id="modal-battle">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">BATTLE</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div id="modal-battle-detail" class=" modal-body card card-mint m-3 p-3">
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- SCRIPTS -->
         <script id="menu-template" type="text/x-handlebars-template">
@@ -96,56 +111,6 @@
                 <h5 class="card-title">{{this.title}} </h5> 
                 <p class="card-text">{{this.text}}</p>   
                 <img src="/img/banner.png" alt="banner" class="banner">
-            </div>
-        </script>
-
-        <script id="mint-template" type="text/x-handlebars-template">
-            <h5 class="card-title">{{this.title}} </h5> 
-            <p class="card-text">{{this.text}}</p>   
-            {{#each this.mints}}
-            <div class="media col-md-8 position-relative">
-                <img src="{{this.img}}" class="mr-3" alt="...">
-                <div class="media-body">
-                  <h5 class="mt-0">{{this.title}}</h5>
-                  <p>{{this.desc}}</p>
-                </div>
-                <button type="button" class="btn btn-primary" onclick="pre_modal_mint()">Mint</button>
-            </div>
-            {{/each}}      
-        </script>
-
-        <script id="modal-mint-template" type="text/x-handlebars-template">            
-            <div class="" >
-                <h5 class="card-title text-center">{{this.name}}</h5>
-                <p class="card-text text-center">{{this.description}}</p>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                    <img id="img_pg_minted" src="{{this.image}}" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body pb-0">
-                            {{#each this.traits}}
-                            {{#if_eq this.display_type null}}
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
-                            </div>
-                            <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
-                            {{/if_eq}}
-                            {{/each}}
-                        </div>                                        
-                    </div>
-                </div>
-                <p class="card-text mb-0 p-0 text-center">Equipments</p>                
-                <div class="row no-gutters justify-content-center">
-                    {{#each this.traits}}
-                    {{#if_eq this.display_type 'boost_number'}}
-                    <button class="btn btn-sm btn-primary" disabled>
-                        <p class="m-0">{{this.trait_type}}</p>
-                        <p class="m-0"><small>{{this.value}}</small></p>
-                    </button>
-                    {{/if_eq}}
-                    {{/each}}
-                </div>
             </div>
         </script>
         
@@ -271,7 +236,68 @@
             </div>                
         </script>
 
+        <script id="mint-template" type="text/x-handlebars-template">
+            <h5 class="card-title">{{this.title}} </h5> 
+            <p class="card-text">{{this.text}}</p>   
+            {{#each this.mints}}
+            <div class="media col-md-8 position-relative">
+                <img src="{{this.img}}" class="mr-3" alt="...">
+                <div class="media-body">
+                  <h5 class="mt-0">{{this.title}}</h5>
+                  <p>{{this.desc}}</p>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="pre_modal_mint()">Mint</button>
+            </div>
+            {{/each}}      
+        </script>
+
+        <script id="modal-mint-template" type="text/x-handlebars-template">            
+            <h5 class="card-title text-center">{{this.name}}</h5>
+            <p class="card-text text-center">{{this.description}}</p>
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img id="img_pg_minted" src="{{this.image}}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body pb-0">
+                        {{#each this.traits}}
+                        {{#if_eq this.display_type null}}
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                        </div>
+                        <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
+                        {{/if_eq}}
+                        {{/each}}
+                    </div>                                        
+                </div>
+            </div>
+            <p class="card-text mb-0 p-0 text-center">Equipments</p>                
+            <div class="row no-gutters justify-content-center">
+                {{#each this.traits}}
+                {{#if_eq this.display_type 'boost_number'}}
+                <button class="btn btn-sm btn-primary" disabled>
+                    <p class="m-0">{{this.trait_type}}</p>
+                    <p class="m-0"><small>{{this.value}}</small></p>
+                </button>
+                {{/if_eq}}
+                {{/each}}
+            </div>
+        </script>
+
         <script id="battle-template" type="text/x-handlebars-template">
+            <h5 class="card-title">{{this.title}} </h5> 
+            <p class="card-text">{{this.text}}</p>   
+            {{#each this.battles}}
+            <div class="media col-md-8 position-relative">
+                <img src="{{this.img}}" class="mr-3" alt="...">
+                <div class="media-body">
+                  <h5 class="mt-0">{{this.title}}</h5>
+                  <p>{{this.desc}}</p>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="modal_battle()">Fight</button>
+            </div>
+            {{/each}}
+            <!--
             <div id="battle-t" class="card col-md-8 text-center mr-2 ml-2">
                 <div class="card-body" style="align-self: center;">
                     <h5 class="card-title">{{this.title}}</h5>
@@ -284,7 +310,70 @@
                     </div>
                 </div>
             </div>
+            -->
         </script>
+
+        <script id="modal-battle-template" type="text/x-handlebars-template">            
+            <div class="row no-gutters">
+                <div class="col-md-4 text-center">
+                    <div class="col-md-12">
+                        <h5 class="card-title text-center">{{this.cpu.name}}</h5>
+                        <p class="card-text text-center">{{this.cpu.description}}</p>        
+                    </div>
+                    <div class="col-md-4">
+                        <img id="img_cpu_battle" src="{{this.cpu.image}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pb-0">
+                            {{#each this.cpu.traits}}
+                            {{#if_eq this.display_type null}}
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                            </div>
+                            <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
+                            {{/if_eq}}
+                            {{/each}}
+                        </div>                                        
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1 class="m-2 text-center">VS</h1>
+                    <div class="card-body pb-0">
+                        <h5 class="card-title text-center">% WIN/LOSE</h5>
+                        <p class="card-text text-center">Win:10% Lose:90%</p>        
+                        <h5 class="card-title text-center">MIN. LEVEL REQUIRED</h5>
+                        <p class="card-text text-center">Level 1</p>        
+                        <h5 class="card-title text-center">MAX. LEVEL REQUIRED</h5>
+                        <p class="card-text text-center">Level 2</p>
+                        <h5 class="card-title text-center">EXTRA REQUIRED</h5>
+                        <p class="card-text text-center">Welcome Badge NFT</p>                        
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body mt-4" onclick="">START BATTLE</button>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <div class="col-md-12">
+                        <h5 class="card-title text-center">{{this.pg.name}}</h5>
+                        <p class="card-text text-center">{{this.pg.description}}</p>        
+                    </div>                    <div class="col-md-4">
+                        <img id="img_pg_battle" src="{{this.pg.image}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pb-0">
+                            {{#each this.pg.traits}}
+                            {{#if_eq this.display_type null}}
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                            </div>
+                            <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
+                            {{/if_eq}}
+                            {{/each}}
+                        </div>                                        
+                    </div>
+                </div>                    
+            </div>
+        </script>  
+
     </body>
 </html>
 

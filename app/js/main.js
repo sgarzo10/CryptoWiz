@@ -55,8 +55,9 @@ function menu_click(menu_name)
         if (links.length > 0) pg_click(0);    
     }
     else if (menu_name === "BATTLE"){
+        p_struct["battles"] = config["battles"];
         col_main.html(template(p_struct));
-        init_battle();
+        //init_battle();
     }
     else if (menu_name === "MINT"){
         p_struct["mints"] = config["mints"];
@@ -159,5 +160,19 @@ function modal_mint(){
     return;
 }
 
+function modal_battle(){
+    $("#modal-battle").modal();
+    let modal_f = $('#modal-battle-detail');
+    let template = Handlebars.compile($("#modal-battle-template")[0].innerHTML);
+    let i = 0;
+
+    let battle_info = {
+        "cpu": config["pg_1"],
+        "pg": config["pg_0"]
+    };
+
+    modal_f.html=modal_f.html(template(battle_info));
+    return;
+}
 
   

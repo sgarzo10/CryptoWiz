@@ -1,0 +1,15 @@
+{
+    "chains": {
+        "matic": {
+            "nft_id_url": "https://polygonscan.com/token/generic-tokenholder-inventory?m=normal&contractAddress=[contract]&a=[wallet]&pUrl=token",
+            "nft_detail_url": "https://api.opensea.io/api/v2/metadata/matic/[contract]/[id]"
+        },
+        "rinkeby": {
+            "nft_id_url": "https://rinkeby.etherscan.io/token/generic-tokenholder-inventory?m=normal&contractAddress=[contract]&a=[wallet]&pUrl=token",
+            "nft_detail_url": "https://testnets-api.opensea.io/api/v2/metadata/rinkeby/[contract]/[id]"
+        }
+    },
+    "log": {
+          "path_file": null
+    }
+}

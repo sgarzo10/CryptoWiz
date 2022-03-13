@@ -132,11 +132,13 @@ function nav_click(nav_name)
 
 
 function pre_modal_mint(){
+    $("#modal-mint-detail").html("<img src=\"/img/mint.gif\" alt=\"banner\" class=\"col-md-12 gif\">");
     $("#modal-mint").modal();
-    setTimeout(modal_mint, 4000);
+    setTimeout(modal_mint, 2950);
 }
 
 function modal_mint(){
+
     let modal_f = $('#modal-mint-detail');
     let template = Handlebars.compile($("#modal-mint-template")[0].innerHTML);
     let i = 0;
@@ -153,7 +155,7 @@ function modal_mint(){
             config["pg_0"]["traits"][i]["trait_type"] = v_trait_type;
         i++;
     }
-    modal_f.html(template(config["pg_0"]));
+    modal_f.html=modal_f.html(template(config["pg_0"]));
     return;
 }
 

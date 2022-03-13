@@ -71,9 +71,8 @@
                         <h5 class="modal-title" id="exampleModalLabel">MINT PG</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
-                    <div class="modal-body">
-                        <div id="modal-mint-detail" class="card m-3 p-3 box-anim-mint" style="max-width: 540px;">
-                        </div>
+                    <div id="modal-mint-detail" class=" modal-body card card-mint m-3 p-3 justify-content-center box-anim-mint">
+                        <img src="/img/mint.gif" alt="banner" class="col-md-12 gif">
                     </div>
                     <div class="modal-footer"></div>
                 </div>
@@ -116,35 +115,37 @@
         </script>
 
         <script id="modal-mint-template" type="text/x-handlebars-template">            
-            <h5 class="card-title text-center">{{this.name}}</h5>
-            <p class="card-text text-center">{{this.description}}</p>
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                <img id="img_pg_minted" src="{{this.image}}" class="card-img" alt="...">
+            <div class="" >
+                <h5 class="card-title text-center">{{this.name}}</h5>
+                <p class="card-text text-center">{{this.description}}</p>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                    <img id="img_pg_minted" src="{{this.image}}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pb-0">
+                            {{#each this.traits}}
+                            {{#if_eq this.display_type null}}
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                            </div>
+                            <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
+                            {{/if_eq}}
+                            {{/each}}
+                        </div>                                        
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body pb-0">
-                        {{#each this.traits}}
-                        {{#if_eq this.display_type null}}
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
-                        </div>
-                        <p class="text-center"><small class="text-muted">{{this.trait_type}}</small></p>                        
-                        {{/if_eq}}
-                        {{/each}}
-                    </div>                                        
+                <p class="card-text mb-0 p-0 text-center">Equipments</p>                
+                <div class="row no-gutters justify-content-center">
+                    {{#each this.traits}}
+                    {{#if_eq this.display_type 'boost_number'}}
+                    <button class="btn btn-sm btn-primary" disabled>
+                        <p class="m-0">{{this.trait_type}}</p>
+                        <p class="m-0"><small>{{this.value}}</small></p>
+                    </button>
+                    {{/if_eq}}
+                    {{/each}}
                 </div>
-            </div>
-            <p class="card-text mb-0 p-0 text-center">Equipments</p>                
-            <div class="row no-gutters justify-content-center">
-                {{#each this.traits}}
-                {{#if_eq this.display_type 'boost_number'}}
-                <button class="btn btn-sm btn-primary" disabled>
-                    <p class="m-0">{{this.trait_type}}</p>
-                    <p class="m-0"><small>{{this.value}}</small></p>
-                </button>
-                {{/if_eq}}
-                {{/each}}
             </div>
         </script>
         

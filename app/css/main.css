@@ -78,6 +78,15 @@ body {
   height: max-content;
 }
 
+.card-mint{
+  height: max-content;
+}
+
+.gif {
+  align-self: center;
+  max-width: max-content;
+}
+
 .btn.btn-sm {
   padding: 0.3rem 1.6rem;
   padding-top: 0.3rem;
@@ -105,28 +114,26 @@ body {
   align-items: center;
 }
 
-.box-anim-mint-std {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  position: relative;
-  animation-name: anim-mint;
-  animation-duration: 4s;
-}
 
 .box-anim-mint {
-  background-color: red;
+  background-color: transparent;
   position: relative;
   animation-name: anim-mint;
-  animation-duration: 4s;
+  animation-duration: 10s;
 }
 
 @keyframes anim-mint {
-  0%   {background-color:red; left:0px; top:0px;}
-  25%  {background-color:yellow; left:0px; top:-10px;}
-  50%  {background-color:blue; left:0px; top:-20px;}
-  75%  {background-color:green; left:0px; top:-10px;}
-  100% {background-color:transparent; left:0px; top:0px;}
+  0%    {background-color:transparent; left:0px; top:0px;}
+  10%   {background-color:transparent; left:0px; top:0px;}
+  20%   {background-color:transparent; left:0px; top:0px;}
+  30%   {background-color:transparent; left:0px; top:0px;}
+  40%   {background-color:rgb(125, 22, 194); left:0px; top:-4px;}
+  50%   {background-color:red; left:0px; top:-6px;}
+  60%   {background-color:rgb(241, 241, 22); left:0px; top:-8px;}
+  70%   {background-color:rgb(22, 173, 22); left:0px; top:-6px;}
+  80%   {background-color:rgb(14, 87, 247); left:0px; top:-4px;}
+  90%   {background-color:rgb(125, 22, 194); left:0px; top:-2px;}
+  100%  {background-color:transparent; left:0px; top:0px;}
 }
 
 

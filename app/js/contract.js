@@ -122,50 +122,45 @@ function handleAccountsChanged(accounts) {
 
 function getNFTToken(token_contract){
   if (currentAddress !== ''){
-      var settings = {
-          'cache': false,
-          'dataType': "json",
-          "async": false,
-          "crossDomain": true,
-          "responseType": "application/json",
-          "url": "http://127.0.0.1:5000/balance_os_nft?c="+token_contract+"&w="+currentAddress,
-          "method": "GET",
-          "headers": {
-              "accept": "application/json",
-              'Access-Control-Allow-Methods':'GET',
-              'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token'
-          }
-      }
-      $.ajax(settings).done( function (response) {
-          let id_list  = response["TokenIDs"];
-          for (let id_l of id_list)
-              nft_list[id_l.toString()] = null;
-      });
-      return;
-  }        
+    var body = {
+      'contract': token_contract,
+      'wallet': currentAddress
+    }
+
+    $.ajax({
+      url: "http://127.0.0.1:5000/balance_os_nft",
+      type: 'POST',
+      contentType: "application/json",
+      data : JSON.stringify(body),
+      success: function(response){
+        let id_list  = response["TokenIDs"];
+        for (let id_l of id_list)
+            nft_list[id_l.toString()] = null;
+      },
+      error: function(xhr){}
+    });
+  }
+  return;
 }
 
 function getNFTJson(TokenID){
   if (currentAddress !== ''){
-      var settings = {
-          'cache': false,
-          'dataType': "json",
-          "async": true,
-          "crossDomain": true,
-          "responseType": "application/json",
-          "url": "http://127.0.0.1:5000/os_nft?id="+TokenID+"&contract="+config[token_contract]+"&chain="+config["environment"],
-          "method": "GET",
-          "headers": {
-              "accept": "application/json",
-              'Access-Control-Allow-Methods':'GET',
-              'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token'
-          }
-      }
-      $.ajax(settings).done( function (response) {
-          nft_list[TokenID] = response;
-          //let img_nft = $('#img-nft')[0];
-          //img_nft.src = response["image"]
-          //img_nft.src = "https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" 
-      });
+
+    var body = {
+      'contract': config[token_contract],
+      'chain':config[chain]["nick"],
+      'id': TokenID
+    }
+
+    $.ajax({
+      url: "http://127.0.0.1:5000/nft_detail",
+      type: 'POST',
+      contentType: "application/json",
+      data : JSON.stringify(body),
+      success: function(response){
+        nft_list[TokenID] = response["response"];
+      },
+      error: function(xhr){}
+    });
   }
 }

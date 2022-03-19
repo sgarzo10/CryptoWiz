@@ -1,13 +1,42 @@
+
 body {
-  /*
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
-   */
-  background: #4e1385;
-  background: linear-gradient(to right, #4e1385, rgba(75, 185, 236, 0.8));
+  font-family: 'Wonder Boy In Monster World', sans-serif; 
+  min-height:100%;
+  background:url(/img/castle.gif) rgba(153, 0, 255, 1.0);
+  background-size:cover;
+  background-blend-mode: multiply;  
+}
+
+/*
+ * App
+ */
+ 
+ .app-title {
+  text-align:center;
+}
+
+.app-logo {
+  align-items: top;
 }
 
 
+.back{
+  color: #fff;
+  background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);        
+  background-image: url(/img/castle.gif);
+  background-position: left bottom;
+  background-repeat: no-repeat;  
+}
+
+.castle-test{
+  min-height:100%;
+  background:url(/img/castle.gif) rgba(153, 0, 255, 0.3);
+  background-size:cover;
+  background-blend-mode: multiply;
+}
 
 .small, small {
   font-size: 85%;
@@ -40,9 +69,25 @@ body {
   padding: 10px;
 }
 
+.bg-purple {
+  color: #fff;
+  background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+}
+
+.bg-grey {
+  color: rgb(8, 8, 8);
+  background: -webkit-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+  background: -o-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #606672 50%, #78808f 70%);
+  background: -moz-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+  background: linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+}
+
 .bar_pg{
   width: 100%;
-  background: #117a8b ;
+  background: linear-gradient(110deg, #838382 60%, #b4b4b1 60%);
 }
 
 .img_pg {
@@ -76,6 +121,7 @@ body {
 
 .card-main{
   height: max-content;
+  opacity: 92%;
 }
 
 .card-mint{
@@ -192,8 +238,6 @@ body {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-
-
 .sidebar-sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -202,8 +246,9 @@ body {
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  background-color: #adebeb8a;
   padding: 8px;
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  opacity: 92%;
 }
 
 .sidebar .nav-link {
@@ -231,23 +276,6 @@ body {
   text-transform: uppercase;
 }
 
-
-#sec_1 {
-  height: 800px;
-  background: linear-gradient(to right, #4e1385, rgba(206, 236, 75, 0.8));
-}
-
-#sec_2 {
-  height: 600px;
-  background: linear-gradient(to right, #4e1385, rgba(236, 75, 75, 0.8));
-}
-
-.page-title {
-    text-align:center;
-    font-family: monospace;
-  }
-
-
 #canvas{
   border: solid 2px blue;  
   width: 100%;
@@ -261,6 +289,5 @@ body {
 #result
 {
   text-align:center;
-  font-family: monospace;
 }
 

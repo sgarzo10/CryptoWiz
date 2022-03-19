@@ -2,6 +2,7 @@ var config = {
     "environment": "test",
     "chain_mainnet": {
         "id": "0x89",
+        "nick":"matic",
         "name": "Polygon Mainnet",
         "native_currency": {
             "name": "MATIC",
@@ -13,6 +14,7 @@ var config = {
     },
     "chain_test": {
         "id": "0x4",
+        "nick":"rinkeby",
         "name": "Rinkeby Testnet",
         "native_currency": {
             "name": "ETHRNK",
@@ -40,39 +42,36 @@ var config = {
     },    
     "token_contract_mainnet": "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
     "token_contract_test": "0x6a709b054deb0c4b201df12e982b3196fc1bbff1",
-    "menu": [
+    "pages": {
+        "HOME":
         {
-            "name":"HOME",
-            "icon":"home"
+            "menu":"HOME",
+            "icon":"home",
+            "title":"CryptoWiz NFT Adventures",
+            "text":"Create and customize your unique CryptoWiz NFT to play a new DEGEN crypto adventure."            
         },
+        "PARTY":
         {
-            "name":"NFT",
-            "icon":"meh"
+            "menu":"PARTY",
+            "icon":"meh",
+            "title":"Show your CryptoWiz NFT",
+            "text":"View and Customize your CryptoWiz with CryptoItem!"
         },
+        "MINT":
         {
-            "name":"MINT",
-            "icon":"meh"
-        },
-        {
-            "name":"BATTLE",
-            "icon":"shield"
-        }        
-    ],
-    "page_home": {
-        "title":"CryptoWiz NFT Adventures",
-        "text":"Create and customize your unique CryptoWiz NFT to play a new DEGEN crypto adventure."
-    },    
-    "page_nft": {
-            "title":"Show CryptoWiz NFT",
-            "text":"TEST"
-    },   
-    "page_battle": {
-            "title":"Battle with CPU",
-            "text":"Fight to win CryptoWiz Items NFT!"
-    },        
-    "page_mint": {
+            "menu":"MINT",
+            "icon":"meh",
             "title":"Mint CryptoWiz NFT",
-            "text":"Mint a new CryptoWiz PG or ITEM"
+            "text":"Mint a new CryptoWiz PG or ITEM!"            
+        },                
+        "BATTLE":
+        {
+            "menu":"BATTLE",
+            "icon":"shield",
+            "title":"CryptoWiz NFT Adventures",
+            "text":"Create and customize your unique CryptoWiz NFT to play a new DEGEN crypto adventure."            
+        },        
+
     },
     "nav": ["Bio","Equip"],
     "mints": [

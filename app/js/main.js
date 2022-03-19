@@ -6,12 +6,8 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
     }
 });
 
-Handlebars.registerHelper('if_null', function(a, opts) {
-    if (a == null) {
-        return opts.fn(this);
-    } else {
-        return opts.inverse(this);
-    }
+Handlebars.registerHelper('perc', function(a, b, opts) {
+    return a * 100 / b;
 });
 
 $(document).ready(() => {
@@ -19,7 +15,9 @@ $(document).ready(() => {
     init_battle();
     let col_menu = $('#col_menu');
     let template = Handlebars.compile($('#menu-template')[0].innerHTML);
-    let menu_list = config.menu;
+    //let menu_list = config.menu;
+    //let menu_list = Object.values(config["pages"])
+    let menu_list = Object(config["pages"])
     col_menu.html(template(menu_list));
     feather.replace();
     $("#modal-mint").on('hide.bs.modal', function(){
@@ -46,15 +44,23 @@ function menu_click(menu_name)
     let col_main = $('#main');
     let template = Handlebars.compile($("#".concat(menu_name.toLowerCase()).concat("-template"))[0].innerHTML);
     let links = [];
+    /*
     let p_struct = {
         "title": config["page_".concat(menu_name.toLowerCase())]["title"],
         "text": config["page_".concat(menu_name.toLowerCase())]["text"]
     }
-    if (menu_name === "NFT"){
+    */
+    let p_struct = {
+        "title": config["pages"][menu_name]["title"],
+        "text": config["pages"][menu_name]["text"]
+    }
+
+    if (menu_name === "PARTY"){
         for (let val of Object.values(nft_list))
         {
-            if (val["name"].indexOf("Wiz") > 0)
-                links.push(val["image"]);
+            links.push(val["image"]);
+            //if (val["name"].indexOf("Wiz") > 0)
+                
         }            
         p_struct["links"] = links;
         col_main.html(template(p_struct));
@@ -84,35 +90,18 @@ function pg_click(index)
 
     for (let trait of Object.values(nft_list)[index]["traits"])
     {
-        let boost = {
-            "name": null,
-            "value": "",
-            "display_type": null
-        };
-
-        for (let [key, value] of Object.entries(trait))
+        let boost = trait;
+        if (trait["trait_type"].indexOf("-") > 0)
         {
-            if ( key == "trait_type")
-            {
-                if (value.indexOf("-") > 0)
-                {
-                    boost["name"]=value.split("-")[0];
-                    boost["value"]=value.split("-")[1]+" ";
-                }
-                else
-                    boost["name"]=value;
-            }
-            if ( key == "value") boost["value"] = boost["value"] + value;
-            if ( key == "display_type") boost["display_type"] = value;
+            trait["name"] = trait["trait_type"].split("-")[0];
+            trait["value"] = trait["trait_type"].split("-")[1] + " " + trait["value"];
         }
-
-        if (boost["name"] !== null)
-        {
-            if (key == "display_type") and (value == null)
-                pg_traits.push(boost);
-            if (key == "display_type") and (value == "boost_number")
-                pg_boosts.push(boost);                
-        } 
+        else
+            trait["name"] = trait["trait_type"];
+        if (trait["display_type"] == null)
+            pg_traits.push(trait);
+        if (trait["display_type"] == "boost_number")
+            pg_boosts.push(trait);                
     }
 
     let p_struct = {
@@ -135,7 +124,6 @@ function nav_click(nav_name)
     item_container.html(template());
     return;
 }
-
 
 function pre_modal_mint(){
     $("#modal-mint-detail").html("<img src=\"/img/mint.gif\" alt=\"banner\" class=\"col-md-12 gif\">");
@@ -179,7 +167,6 @@ function modal_battle(){
     modal_f.html=modal_f.html(template(battle_info));
     return;
 }
-
 
 function show_battle()
 {

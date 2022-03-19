@@ -3,12 +3,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+        <link href="http://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
+        <link href="http://fonts.cdnfonts.com/css/wonder-boy-in-monster-world" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet" type="text/css">
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -29,10 +29,10 @@
         </title>
     </head>
 
-    <body>
-        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap page-title mb-3">            
+    <body class="">
+        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap app-title mb-3">            
             <a class="navbar-brand" href="#">
-                <img id="logo" src="img\pg.png" width="30" height="30" class="d-inline-block align-top" alt="Immagine player">
+                <img id="logo" src="img\pg.png" width="30" height="30" class="d-inline-block app-logo" alt="Immagine player">
                 CryptoWiz-TEST
             </a>
             <div class="form-inline">
@@ -55,7 +55,7 @@
                         </div>
                     </nav>
                 </div>
-                <div id="main" class="card card-main col-md-8 text-center mr-2 ml-2">
+                <div id="main" class="card card-main col-md-8 text-center mr-2 ml-2 bg-grey">
                     <!-- TEMPLATE                     <canvas id="viewport" class="d-none" ></canvas>-->
 
                 </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="modal fade bd-example-modal-xl" id="modal-battle">
+        <div class="modal fade bd-example-modal-xl" id="modal-battle" data-backdrop="static">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -89,9 +89,15 @@
                     <div id="modal-battle-detail" class="modal-body card card-mint m-3 p-3">
                     </div>
                     <div id="modal-battle-play" class="card-body d-none" style="align-self: center;">
-                        <canvas id="viewport" ></canvas>
-                        <div class="row">
-                            <div class="col-md-5"></div>
+                        <canvas id="viewport"></canvas>
+                        <div class="row" style="justify-content: center;">
+                            <div class="progress col-md-6">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="progress col-md-6">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>                            
+                            <div class="col-md-5 m-1"></div>
                             <button type="button" class="btn btn-primary btn-lg col-md-2" onclick="test()">PLAY</button>
                             <div class="col-md-5"></div>
                         </div>
@@ -106,29 +112,36 @@
         <script id="menu-template" type="text/x-handlebars-template">
             {{#each this}}
                 <li class="nav-item">
-                    <a class="nav-link" onclick="menu_click('{{this.name}}')">
+                    <a class="nav-link" onclick="menu_click('{{@key}}')">
                         <span data-feather="{{this.icon}}"></span>
-                        {{this.name}}
+                        {{this.menu}}
                     </a>
                 </li>                
             {{/each}}
         </script>
 
         <script id="home-template" type="text/x-handlebars-template">
-            <div id="home-t" class="card col-md-8 text-center mr-2 ml-2" style="align-self: center;">
+            <h5 class="card-title">{{this.title}} </h5> 
+            <p class="card-text">{{this.text}}</p>   
+
+            <div id="home-t" class="media rounded-top" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <img src="/img/banner.png" alt="banner" class="banner">
+                </div>                    
+            </div>
+            <!--  
+            <div  class="card col-md-8 text-center mr-2 ml-2" style="align-self: center;">
                 <h5 class="card-title">{{this.title}} </h5> 
                 <p class="card-text">{{this.text}}</p>   
                 <img src="/img/banner.png" alt="banner" class="banner">
             </div>
+            -->
         </script>
         
-        <script id="nft-template" type="text/x-handlebars-template">
-            <div>
-                <h2>{{this.title}}</h2>
-                <br>
-                <h4>{{this.text}}</h4>
-            </div>
-            <div class="row row-cols-1 bar_pg" >
+        <script id="party-template" type="text/x-handlebars-template"> 
+            <h5 class="card-title">{{this.title}} </h5> 
+            <p class="card-text">{{this.text}}</p>   
+            <div class="row row-cols-1 bar_pg rounded" >
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -170,7 +183,7 @@
                         {{#each this.traits}}
                             {{#if_eq this.display_type null}}
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="50">{{this.value}}</div>
+                                <div class="progress-bar" role="progressbar" style="width: {{perc this.value this.max_value}}%;" aria-valuenow="{{this.value}}" aria-valuemin="0" aria-valuemax="{{this.max_value}}">{{this.value}}</div>
                             </div>
                             <p><small class="text-muted">{{this.name}}</small></p>                        
                             {{/if_eq}}                      

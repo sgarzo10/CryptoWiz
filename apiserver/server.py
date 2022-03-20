@@ -1,4 +1,4 @@
-from logic import get_nft_detail, get_nft_ids
+from logic import get_nft_detail, get_nft_ids, be_generate_nft
 from utility import Config, validate_format
 from json import loads
 from flask import Flask, request, jsonify
@@ -76,6 +76,14 @@ def check_params_nft_detail(body):
     else:
         to_ret['response'] = "Body is null or is not JSON format"
     return to_ret
+
+
+@app.route('/generate_nft', methods=["POST"])
+@cross_origin()
+def generate_nft():
+    body = request.data.decode()
+    info(body)
+    return jsonify(be_generate_nft())
 
 
 if __name__ == '__main__':

@@ -11,5 +11,14 @@
     },
     "log": {
           "path_file": null
+    },
+    "template_metadata": {
+        "animation_url": null,
+        "name": "CryptoWiz - {name}",
+        "description": "",
+        "external_link": null,
+        "image": "",
+        "traits": [],
+        "custom_data": {}
     }
 }

@@ -1,62 +1,79 @@
 {
     "animation_url": null,
     "custom_data": {
-        "items": {
-            "AC_ASCIA": {
-                "attack": 10,
-                "defense": 0,
+        "items": [
+            {
+                "attack": 5,
+                "category": "PE",
+                "defense": 5,
+                "display_type": "PELLE",
                 "precision": 5,
-                "speed": 0,
-                "stamina": 0
+                "speed": 5,
+                "stamina": 5,
+                "sub_category": "BASE",
+                "value_type": "BASE"
             },
-            "BC_JOINT": {
+            {
                 "attack": 0,
+                "category": "SC",
                 "defense": 0,
+                "display_type": "SCARPE",
+                "precision": 0,
+                "speed": 5,
+                "stamina": 0,
+                "sub_category": "BASE",
+                "value_type": "BASE"
+            },
+            {
+                "attack": 0,
+                "category": "VE",
+                "defense": 5,
+                "display_type": "VESTITO",
+                "precision": 0,
+                "speed": 0,
+                "stamina": 5,
+                "sub_category": "ADA",
+                "value_type": "CARDANO"
+            },
+            {
+                "attack": 0,
+                "category": "BC",
+                "defense": 0,
+                "display_type": "ACCESSORIO",
                 "precision": 3,
                 "speed": 0,
-                "stamina": 0
+                "stamina": 0,
+                "sub_category": "JOINT",
+                "value_type": "JOINT"
             },
-            "CPB_ADA": {
-                "attack": 5,
-                "defense": 0,
-                "precision": 7,
-                "speed": 0,
-                "stamina": 0
-            },
-            "OCS_ETH": {
+            {
                 "attack": 0,
+                "category": "CP",
                 "defense": 0,
-                "precision": 14,
+                "display_type": "CAPPELLO",
+                "precision": 6,
                 "speed": 0,
-                "stamina": 0
+                "stamina": 0,
+                "sub_category": "SOL",
+                "value_type": "SOLANA"
             },
-            "PE_NERO": {
-                "attack": 7,
-                "defense": 5,
-                "precision": 4,
-                "speed": 4,
-                "stamina": 5
-            },
-            "SC_ADIDAS": {
-                "attack": 0,
+            {
+                "attack": 15,
+                "category": "AC",
                 "defense": 0,
-                "precision": 0,
-                "speed": 9,
-                "stamina": 0
-            },
-            "VE_SOL": {
-                "attack": 0,
-                "defense": 5,
-                "precision": 0,
+                "display_type": "ARMA",
+                "precision": 8,
                 "speed": 0,
-                "stamina": 5
+                "stamina": 0,
+                "sub_category": "LSR_BNB",
+                "value_type": "SPADA LASER BINANCE"
             }
-        },
+        ],
         "total": {
-            "attack": 22,
+            "attack": 20,
             "defense": 10,
-            "precision": 33,
-            "speed": 13,
+            "precision": 22,
+            "speed": 10,
             "stamina": 10
         }
     },
@@ -75,7 +92,7 @@
             "display_type": null,
             "max_value": 50,
             "trait_type": "Attack",
-            "value": 22
+            "value": 20
         },
         {
             "display_type": null,
@@ -87,48 +104,43 @@
             "display_type": null,
             "max_value": 50,
             "trait_type": "Precision",
-            "value": 33
+            "value": 22
         },
         {
             "display_type": null,
             "max_value": 50,
             "trait_type": "Speed",
-            "value": 13
+            "value": 10
         },
         {
             "display_type": null,
-            "trait_type": "PE",
-            "value": "NERO"
+            "trait_type": "PELLE",
+            "value": "BASE"
         },
         {
             "display_type": null,
-            "trait_type": "SC",
-            "value": "ADIDAS"
+            "trait_type": "SCARPE",
+            "value": "BASE"
         },
         {
             "display_type": null,
-            "trait_type": "VE",
-            "value": "SOL"
+            "trait_type": "VESTITO",
+            "value": "CARDANO"
         },
         {
             "display_type": null,
-            "trait_type": "BC",
+            "trait_type": "ACCESSORIO",
             "value": "JOINT"
         },
         {
             "display_type": null,
-            "trait_type": "OCS",
-            "value": "ETH"
+            "trait_type": "CAPPELLO",
+            "value": "SOLANA"
         },
         {
             "display_type": null,
-            "trait_type": "CPB",
-            "value": "ADA"
-        },
-        {
-            "display_type": null,
-            "trait_type": "AC",
-            "value": "ASCIA"
+            "trait_type": "ARMA",
+            "value": "SPADA LASER BINANCE"
         }
     ]
 }

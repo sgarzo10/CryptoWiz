@@ -39,11 +39,11 @@ def be_generate_nft():
             "value": v,
             "max_value": 50
         })
-    for k, v in metadata["custom_data"]["items"].items():
+    for i in metadata["custom_data"]["items"]:
         traits.append({
-            "trait_type": k.split("_")[0],
+            "trait_type": i['display_type'].title(),
             "display_type": None,
-            "value": k.split("_")[1]
+            "value": i['value_type'].title()
         })
     metadata["traits"] = traits
     return metadata

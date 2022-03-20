@@ -25,17 +25,19 @@
         <script src="js/main.js" defer></script>        
 
         <title>
-            CryptoWiz - Battle (TEST)
+            CryptoWiz - dApp (TEST)
         </title>
     </head>
 
     <body class="">
-        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap app-title mb-3">            
-            <a class="navbar-brand" href="#">
-                <img id="logo" src="img\pg.png" width="30" height="30" class="d-inline-block app-logo" alt="Immagine player">
-                CryptoWiz-TEST
-            </a>
-            <div class="form-inline">
+        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap align-items-center mb-3 p-1">            
+            <div class="col-md-6 text-left">
+                <a class="navbar-brand p-0 text-left" href="#">
+                    <img id="logo" src="img\pg.png" class="d-inline img-logo" alt="img pg"> 
+                </a>
+                <h5 id="app-title" class="d-inline">CryptoWiz-TEST</h5> 
+            </div>
+            <div class="col-md-6 text-right">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>N.D.</button>
                 <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
                 <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton"></button>
@@ -126,7 +128,7 @@
 
             <div id="home-t" class="media rounded-top" style="max-width: 540px;">
                 <div class="row no-gutters">
-                    <img src="/img/banner.png" alt="banner" class="banner">
+                    <img src="/img/banner.png" alt="banner" class="img-banner">
                 </div>                    
             </div>
             <!--  
@@ -146,7 +148,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             {{#each this.links}}
-                                <img class="img_pg" id="img_pg_{{@index}}" src="{{this}}" onclick="pg_click({{@index}})" />
+                                <img class="img-pg" id="img_pg_{{@index}}" src="{{this}}" onclick="pg_click({{@index}})" />
                             {{/each}}
                             <!--
                                 <img class="img_pg" src="https://lh3.googleusercontent.com/3y1ABTAnFsehd-Ol-9KjRXBB1Vd_nH4yaQotL4BuusqMO2rguAfHqPoymOO4UPF6ckKWRFINSNrNk0Au8oNDzOIb6kAYqyNSIj56gQ" />
@@ -175,8 +177,8 @@
                 <p class="card-text">{{this.description}}</p>
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img id="img_pg" src="{{this.image}}" class="card-img" alt="...">
-                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body" onclick="set_pg()">SET PG</button>
+                    <img id="img-pg" src="{{this.image}}" class="card-img" alt="...">
+                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn-card" onclick="set_pg()">SET PG</button>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body pb-0">
@@ -241,13 +243,13 @@
             <div class="row no-gutters" style="justify-content: center;">
                 <span class="border rounded border-primary">
                     <div class="container bg-light text-dark">
-                        <img id="img_pg" src="{{this.image}}" class="img_item " alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
-                        <img id="img_pg" src="{{this.image}}" class="img_item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item " alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
                     </div>
                 </span>
                 </div>
@@ -371,7 +373,7 @@
                         <h5 class="card-title text-center">EXTRA REQUIRED</h5>
                         <p class="card-text text-center">Welcome Badge NFT</p>                        
                     </div>
-                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn_card_body mt-4" onclick="show_battle()">START BATTLE</button>
+                    <button type="button" class="btn btn-primary btn-lg col-md-2 btn-card mt-4" onclick="show_battle()">START BATTLE</button>
                 </div>
                 
                 <div class="col-md-4 text-center">

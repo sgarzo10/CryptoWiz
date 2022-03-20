@@ -1,6 +1,7 @@
 
 body {
   font-family: 'Wonder Boy In Monster World', sans-serif; 
+  font-size: 1.0rem;
   min-height:100%;
   background:url(/img/castle.gif) rgba(153, 0, 255, 1.0);
   background-size:cover;
@@ -8,17 +9,16 @@ body {
 }
 
 /*
- * App
+ * NavBar (Barra Alta)
  */
  
  .app-title {
   text-align:center;
 }
 
-.app-logo {
-  align-items: top;
-}
-
+/*
+ * App
+ */
 
 .back{
   color: #fff;
@@ -38,17 +38,124 @@ body {
   background-blend-mode: multiply;
 }
 
+.bg-purple {
+  color: #fff;
+  background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+}
+
+.bg-grey {
+  color: rgb(8, 8, 8);
+  background: -webkit-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+  background: -o-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #606672 50%, #78808f 70%);
+  background: -moz-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+  background: linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
+}
+
 .small, small {
   font-size: 85%;
 }
 
-.img_item{
+/*
+ * Button
+ */
+
+.btn {
+  font-size: .60rem;
+}
+
+ .btn.btn-sm {
+  padding: 0.3rem 1.6rem;
+  padding-top: 0.3rem;
+  padding-right: 1.6rem;
+  padding-bottom: 0.3rem;
+  padding-left: 1.6rem;
+}
+
+.btn-card {
+  max-width: max-content;
+}
+
+/*
+ * Card
+ */
+ .card-main{
+  height: max-content;
+  opacity: 92%;
+}
+
+.card-mint{
+  height: max-content;
+}
+
+/*
+ * Image
+ */
+
+ img {
+    background: transparent;
+ }
+
+.img-logo {
+  width: 55;
+  height: 55;
+}
+
+.img-item{
     width: 20%;
 }
 
-.banner{
+.img-pg {
+  width: 5%;
+}
+
+.img-banner{
   max-width: 100%;
   max-height: 100%;
+}
+
+/*
+ * Menu
+ */
+
+ .sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: auto;
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  padding: 8px;
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  opacity: 92%;
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #117a8b;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 
 .feather {
@@ -69,36 +176,13 @@ body {
   padding: 10px;
 }
 
-.bg-purple {
-  color: #fff;
-  background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
-  background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
-  background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
-  background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
-}
-
-.bg-grey {
-  color: rgb(8, 8, 8);
-  background: -webkit-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
-  background: -o-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #606672 50%, #78808f 70%);
-  background: -moz-linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
-  background: linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
-}
 
 .bar_pg{
   width: 100%;
   background: linear-gradient(110deg, #838382 60%, #b4b4b1 60%);
 }
 
-.img_pg {
-  background: transparent;
-  width: 5%;
-}
 
-.img_mint {
-  background: transparent;
-  width: 80%;
-}
 
 .col-row-mint
 {
@@ -115,31 +199,9 @@ body {
   min-width: -webkit-fill-available;
 }
 
-.btn_card_body {
-  max-width: max-content;
-}
-
-.card-main{
-  height: max-content;
-  opacity: 92%;
-}
-
-.card-mint{
-  height: max-content;
-}
-
 .gif {
   align-self: center;
   max-width: max-content;
-}
-
-.btn.btn-sm {
-  padding: 0.3rem 1.6rem;
-  padding-top: 0.3rem;
-  padding-right: 1.6rem;
-  padding-bottom: 0.3rem;
-  padding-left: 1.6rem;
-  font-size: .55rem;
 }
 
 .carousel {
@@ -238,43 +300,6 @@ body {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-.sidebar-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 48px; /* Height of navbar */
-  height: auto;
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  padding: 8px;
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-  opacity: 92%;
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
-
-.sidebar .nav-link.active {
-  color: #117a8b;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
 
 #canvas{
   border: solid 2px blue;  

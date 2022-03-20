@@ -56,6 +56,17 @@ body {
 
 .small, small {
   font-size: 85%;
+  width: -webkit-fill-available;
+  align-self: center;
+}
+
+.row-center {
+  align-self: center;
+  align-items: center;
+}
+
+#item-container {
+  align-self: center;
 }
 
 /*
@@ -94,7 +105,7 @@ body {
  * Image
  */
 
- img {
+img {
     background: transparent;
  }
 
@@ -109,6 +120,7 @@ body {
 
 .img-pg {
   width: 5%;
+  margin: 0.1rem 1rem 0.1rem 1rem;
 }
 
 .img-banner{
@@ -136,6 +148,7 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+  transition-duration: 0.4s;
   cursor: pointer;
 }
 
@@ -151,6 +164,14 @@ body {
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
+}
+
+.nav-link-menu {
+  text-decoration: none;
+}
+
+.nav-link-menu:hover {
+  color: grey;
 }
 
 .sidebar-heading {

@@ -6,6 +6,14 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
     }
 });
 
+Handlebars.registerHelper('if_int', function(a, opts) {
+    if (a > 0) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+});
+
 Handlebars.registerHelper('perc', function(a, b, opts) {
     return a * 100 / b;
 });
@@ -44,12 +52,6 @@ function menu_click(menu_name)
     let col_main = $('#main');
     let template = Handlebars.compile($("#".concat(menu_name.toLowerCase()).concat("-template"))[0].innerHTML);
     let links = [];
-    /*
-    let p_struct = {
-        "title": config["page_".concat(menu_name.toLowerCase())]["title"],
-        "text": config["page_".concat(menu_name.toLowerCase())]["text"]
-    }
-    */
     let p_struct = {
         "title": config["pages"][menu_name]["title"],
         "text": config["pages"][menu_name]["text"]
@@ -57,11 +59,7 @@ function menu_click(menu_name)
 
     if (menu_name === "PARTY"){
         for (let val of Object.values(nft_list))
-        {
             links.push(val["image"]);
-            //if (val["name"].indexOf("Wiz") > 0)
-                
-        }            
         p_struct["links"] = links;
         col_main.html(template(p_struct));
         if (links.length > 0) pg_click(0);    
@@ -85,34 +83,15 @@ function pg_click(index)
 {
     let div_pg = $('#pg-t');
     let template = Handlebars.compile($("#pg-template")[0].innerHTML);
-    let pg_traits = [];
-    let pg_boosts = [];
-
-    for (let trait of Object.values(nft_list)[index]["traits"])
-    {
-        let boost = trait;
-        if (trait["trait_type"].indexOf("-") > 0)
-        {
-            trait["name"] = trait["trait_type"].split("-")[0];
-            trait["value"] = trait["trait_type"].split("-")[1] + " " + trait["value"];
-        }
-        else
-            trait["name"] = trait["trait_type"];
-        if (trait["display_type"] == null)
-            pg_traits.push(trait);
-        if (trait["display_type"] == "boost_number")
-            pg_boosts.push(trait);                
-    }
-
     let p_struct = {
         "name": Object.values(nft_list)[index]["name"],
         "image": Object.values(nft_list)[index]["image"],
         "description": Object.values(nft_list)[index]["description"],
-        "traits": pg_traits,
-        "boosts": pg_boosts,
+        "pg": config["test_pg"],
         "nav": config["nav"]
     };
     div_pg.html(template(p_struct));
+    nav_click('BIO');;
     pg_img = Object.values(nft_list)[index]["image"];
     return;
 }
@@ -136,20 +115,7 @@ function modal_mint(){
     let modal_f = $('#modal-mint-detail');
     let template = Handlebars.compile($("#modal-mint-template")[0].innerHTML);
     let i = 0;
-    for (let val of Object.values(config["pg_0"]["traits"]))
-    {
-        let v_trait_type = val["trait_type"];
-        let v_value = val["value"]
-        if (v_trait_type.indexOf("-") > 0)
-        {
-            config["pg_0"]["traits"][i]["trait_type"] = v_trait_type.split("-")[0];
-            config["pg_0"]["traits"][i]["value"] = v_trait_type.split("-")[1]+" "+ v_value.toString();
-        }
-        else
-            config["pg_0"]["traits"][i]["trait_type"] = v_trait_type;
-        i++;
-    }
-    modal_f.html=modal_f.html(template(config["pg_0"]));
+    modal_f.html=modal_f.html(template(config["test_pg"]));
     return;
 }
 
@@ -160,8 +126,8 @@ function modal_battle(){
     let i = 0;
 
     let battle_info = {
-        "cpu": config["pg_1"],
-        "pg": config["pg_0"]
+        "cpu": config["pg_test"],
+        "pg": config["pg_test"]
     };
 
     modal_f.html=modal_f.html(template(battle_info));

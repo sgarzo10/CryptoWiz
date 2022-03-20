@@ -81,7 +81,7 @@ async function checkConnect(accounts){
         getNFTJson(nft_id);
     }
     else
-      getNFTJson("0");
+      nft_list["0"] = config["test_pg"];
    
     handleChainChanged(chain_id);
     getBalanceNative().then(console.log);

@@ -60,7 +60,7 @@ var config = {
         "MINT":
         {
             "menu":"MINT",
-            "icon":"meh",
+            "icon":"loader",
             "title":"Mint CryptoWiz NFT",
             "text":"Mint a new CryptoWiz PG or ITEM!"            
         },                
@@ -97,94 +97,150 @@ var config = {
             "desc":"Fight to win $MATIC!",
             "img": "/img/battle_cash.png"
         }        
-    ],    
-    "pg_0": {
-        "animation_url": null, 
-        "description": "CryptoWiz PG 0", 
-        "external_link": null, 
-        "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
-        "name": "CryptoWiz - PG #0000",
-        "test": "test",
-        "traits": [
-            {
-                "trait_type": "Stamina",
-                "display_type": null,
-                "value": 15,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Attack",
-                "display_type": null,
-                "value": 10,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Defense",
-                "display_type": null,
-                "value": 15,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Precision",
-                "display_type": null,
-                "value": 12,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Agility",
-                "display_type": null,
-                "value": 8,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Vestito SOL - Defense +",
-                "display_type": "boost_number",
-                "value": 10
+    ],
+    "test_pg": {
+        "animation_url": null,
+        "custom_data": {
+            "items": [
+                {
+                    "attack": 7,
+                    "category": "PE",
+                    "defense": 5,
+                    "display_type": "PELLE",
+                    "precision": 4,
+                    "speed": 4,
+                    "stamina": 5,
+                    "sub_category": "NERO",
+                    "value_type": "NERA"
+                },
+                {
+                    "attack": 0,
+                    "category": "SC",
+                    "defense": 0,
+                    "display_type": "SCARPE",
+                    "precision": 0,
+                    "speed": 5,
+                    "stamina": 0,
+                    "sub_category": "BASE",
+                    "value_type": "BASE"
+                },
+                {
+                    "attack": 0,
+                    "category": "VE",
+                    "defense": 5,
+                    "display_type": "VESTITO",
+                    "precision": 0,
+                    "speed": 0,
+                    "stamina": 5,
+                    "sub_category": "BNB",
+                    "value_type": "BINANCE"
+                },
+                {
+                    "attack": 0,
+                    "category": "OC",
+                    "defense": 0,
+                    "display_type": "ACCESSORIO",
+                    "precision": 5,
+                    "speed": 0,
+                    "stamina": 0,
+                    "sub_category": "MX",
+                    "value_type": "OCCHIO MX"
+                },
+                {
+                    "attack": 0,
+                    "category": "CPE",
+                    "defense": 0,
+                    "display_type": "COPRICAPO",
+                    "precision": 8,
+                    "speed": 0,
+                    "stamina": 3,
+                    "sub_category": "COR",
+                    "value_type": "CORONA"
+                },
+                {
+                    "attack": 20,
+                    "category": "AC",
+                    "defense": 0,
+                    "display_type": "ARMA",
+                    "precision": 10,
+                    "speed": 0,
+                    "stamina": 0,
+                    "sub_category": "LSR_ETH",
+                    "value_type": "SPADA LASER ETHEREUM"
+                }
+            ],
+            "total": {
+                "attack": 27,
+                "defense": 10,
+                "precision": 27,
+                "speed": 9,
+                "stamina": 13
             }
-        ]
-    },
-    "pg_1": {
-        "animation_url": null, 
-        "description": "CryptoWiz PG 1", 
-        "external_link": null, 
-        "image": "https://i.pinimg.com/originals/06/24/e3/0624e378f45e6033ca34dcfbe4df1f9d.png", 
-        "name": "CryptoWiz - PG #0001",
-        "test": "test",
+        },
+        "description": "The CryptoWiz number x",
+        "external_link": null,
+        "image": "/img/pg.png",
+        "name": "CryptoWiz - x",
         "traits": [
             {
+                "display_type": null,
+                "max_value": 50,
                 "trait_type": "Stamina",
-                "display_type": null,
-                "value": 30,
-                "max_value": 50
+                "value": 13
             },
             {
+                "display_type": null,
+                "max_value": 50,
                 "trait_type": "Attack",
-                "display_type": null,
-                "value": 30,
-                "max_value": 50
+                "value": 27
             },
             {
+                "display_type": null,
+                "max_value": 50,
                 "trait_type": "Defense",
-                "display_type": null,
-                "value": 30,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Precision",
-                "display_type": null,
-                "value": 30,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Agility",
-                "display_type": null,
-                "value": 30,
-                "max_value": 50
-            },
-            {
-                "trait_type": "Vestito SOL - Defense +",
-                "display_type": "boost_number",
                 "value": 10
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Precision",
+                "value": 27
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Speed",
+                "value": 9
+            },
+            {
+                "display_type": null,
+                "trait_type": "Pelle",
+                "value": "Nera"
+            },
+            {
+                "display_type": null,
+                "trait_type": "Scarpe",
+                "value": "Base"
+            },
+            {
+                "display_type": null,
+                "trait_type": "Vestito",
+                "value": "Binance"
+            },
+            {
+                "display_type": null,
+                "trait_type": "Accessorio",
+                "value": "Occhio Mx"
+            },
+            {
+                "display_type": null,
+                "trait_type": "Copricapo",
+                "value": "Corona"
+            },
+            {
+                "display_type": null,
+                "trait_type": "Arma",
+                "value": "Spada Laser Ethereum"
             }
         ]
     }

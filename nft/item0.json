@@ -2,8 +2,8 @@
     "animation_url": null,
     "custom_data": {
         "items": {
-            "ACC_BST_CRT": {
-                "attack": 4,
+            "AC_ASCIA": {
+                "attack": 10,
                 "defense": 0,
                 "precision": 5,
                 "speed": 0,
@@ -16,17 +16,17 @@
                 "speed": 0,
                 "stamina": 0
             },
-            "CP_SOL": {
-                "attack": 0,
+            "CPB_ADA": {
+                "attack": 5,
                 "defense": 0,
-                "precision": 6,
+                "precision": 7,
                 "speed": 0,
                 "stamina": 0
             },
-            "EXT_PALLA": {
-                "attack": 1,
+            "OCS_ETH": {
+                "attack": 0,
                 "defense": 0,
-                "precision": 10,
+                "precision": 14,
                 "speed": 0,
                 "stamina": 0
             },
@@ -44,7 +44,7 @@
                 "speed": 9,
                 "stamina": 0
             },
-            "VE_ADA": {
+            "VE_SOL": {
                 "attack": 0,
                 "defense": 5,
                 "precision": 0,
@@ -53,9 +53,9 @@
             }
         },
         "total": {
-            "attack": 12,
+            "attack": 22,
             "defense": 10,
-            "precision": 28,
+            "precision": 33,
             "speed": 13,
             "stamina": 10
         }
@@ -75,7 +75,7 @@
             "display_type": null,
             "max_value": 50,
             "trait_type": "Attack",
-            "value": 12
+            "value": 22
         },
         {
             "display_type": null,
@@ -87,7 +87,7 @@
             "display_type": null,
             "max_value": 50,
             "trait_type": "Precision",
-            "value": 28
+            "value": 33
         },
         {
             "display_type": null,
@@ -97,80 +97,38 @@
         },
         {
             "display_type": null,
-            "trait_type": "Pe_Nero",
-            "value": {
-                "attack": 7,
-                "defense": 5,
-                "precision": 4,
-                "speed": 4,
-                "stamina": 5
-            }
+            "trait_type": "PE",
+            "value": "NERO"
         },
         {
             "display_type": null,
-            "trait_type": "Sc_Adidas",
-            "value": {
-                "attack": 0,
-                "defense": 0,
-                "precision": 0,
-                "speed": 9,
-                "stamina": 0
-            }
+            "trait_type": "SC",
+            "value": "ADIDAS"
         },
         {
             "display_type": null,
-            "trait_type": "Ve_Ada",
-            "value": {
-                "attack": 0,
-                "defense": 5,
-                "precision": 0,
-                "speed": 0,
-                "stamina": 5
-            }
+            "trait_type": "VE",
+            "value": "SOL"
         },
         {
             "display_type": null,
-            "trait_type": "Bc_Joint",
-            "value": {
-                "attack": 0,
-                "defense": 0,
-                "precision": 3,
-                "speed": 0,
-                "stamina": 0
-            }
+            "trait_type": "BC",
+            "value": "JOINT"
         },
         {
             "display_type": null,
-            "trait_type": "Cp_Sol",
-            "value": {
-                "attack": 0,
-                "defense": 0,
-                "precision": 6,
-                "speed": 0,
-                "stamina": 0
-            }
+            "trait_type": "OCS",
+            "value": "ETH"
         },
         {
             "display_type": null,
-            "trait_type": "Acc_Bst_Crt",
-            "value": {
-                "attack": 4,
-                "defense": 0,
-                "precision": 5,
-                "speed": 0,
-                "stamina": 0
-            }
+            "trait_type": "CPB",
+            "value": "ADA"
         },
         {
             "display_type": null,
-            "trait_type": "Ext_Palla",
-            "value": {
-                "attack": 1,
-                "defense": 0,
-                "precision": 10,
-                "speed": 0,
-                "stamina": 0
-            }
+            "trait_type": "AC",
+            "value": "ASCIA"
         }
     ]
 }

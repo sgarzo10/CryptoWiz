@@ -91,16 +91,22 @@ function pg_click(index)
         "nav": config["nav"]
     };
     div_pg.html(template(p_struct));
-    nav_click('BIO');;
+    nav_click('Bio');;
     pg_img = Object.values(nft_list)[index]["image"];
     return;
 }
 
 function nav_click(nav_name)
 {
-    let item_container = $('#item-container');
+    let edit_container = $('#edit-container');
     let template = Handlebars.compile($("#".concat(nav_name.toLowerCase()).concat("-template"))[0].innerHTML);
-    item_container.html(template());
+    if (nav_name == "Equip")
+        edit_container.html(template(config["test_item"]));
+    if (nav_name == "Bio")
+    {
+        config["test_pg"]["nick"] = config["test_pg"]["name"].split(" - ")[1];
+        edit_container.html(template(config["test_pg"]));
+    }        
     return;
 }
 

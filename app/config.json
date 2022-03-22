@@ -243,5 +243,66 @@ var config = {
                 "value": "Spada Laser Ethereum"
             }
         ]
-    }
+    },
+    "test_item": {
+        "animation_url": null,
+        "custom_data": {
+            "items": [
+                {
+                    "attack": 0,
+                    "category": "VE",
+                    "defense": 5,
+                    "display_type": "VESTITO",
+                    "precision": 0,
+                    "speed": 0,
+                    "stamina": 5,
+                    "sub_category": "BNB",
+                    "value_type": "BINANCE"
+                }
+            ],
+            "total": {
+                "attack": 0,
+                "defense": 5,
+                "precision": 0,
+                "speed": 0,
+                "stamina": 5
+            }
+        },
+        "description": "The CryptoWiz BNB Dress",
+        "external_link": null,
+        "image": "/img/item.png",
+        "name": "CryptoWiz Item - BNB Dress",
+        "traits": [
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Stamina",
+                "value": 5
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Attack",
+                "value": 0
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Defense",
+                "value": 5
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Precision",
+                "value": 0
+            },
+            {
+                "display_type": null,
+                "max_value": 50,
+                "trait_type": "Speed",
+                "value": 0
+            }
+        ]
+    }    
 }

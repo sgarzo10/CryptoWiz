@@ -203,22 +203,22 @@
                     </li>
                     {{/each}}
                 </ul>
-                <div id="item-container" class="card-body" >
+                <div id="edit-container" class="card-body" >
                 </div>
             </div>
         </script>
 
         <script id="bio-template" type="text/x-handlebars-template">
             <div class="row no-gutters row-center p-1 m-1">
-                <div class="col-sm col-md-2 text-left">Name</div>
-                <div class="col-sm col-md-10 d-flex">
+                <div class="col-sm col-md-12 text-left">Name</div>
+                <div class="col-sm col-md-12 d-flex">
                     <small class="text-muted  d-inline">CryptoWiz - </small>
-                    <input type="text" class="form-control d-flex d-inline" id="inputName" placeholder="{{this.name}}">
+                    <input type="text" class="form-control d-flex d-inline" id="inputName" placeholder="{{this.nick}}">
                 </div>
             </div>
             <div class="row no-gutters row-center p-1 m-1">
-                <div class="col-sm text-left">Description</div>
-                <div class="col-sm">
+                <div class="col-sm text-left col-md-12">Description</div>
+                <div class="col-sm col-md-12">
                     <input type="text" class="form-control" id="inputDesc" placeholder="{{this.description}}">
                 </div>
             </div>
@@ -228,23 +228,42 @@
         </script>
 
         <script id="equip-template" type="text/x-handlebars-template">
-            <div class="row no-gutters" style="justify-content: center;">
-                <span class="border rounded border-primary">
-                    <div class="container bg-light text-dark">
-                        <img id="img-pg" src="{{this.image}}" class="img-item " alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
-                        <img id="img-pg" src="{{this.image}}" class="img-item" alt="...">
+            <div class="col-md-12 container-items bg-light text-dark rounded">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+            </div>
+            <div class="col-md-6 card-body pb-0">
+                {{#each this.traits}}
+                {{#if_int this.max_value}}    
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{perc this.value this.max_value}}%;" aria-valuenow="{{this.value}}" aria-valuemin="0" aria-valuemax="{{this.max_value}}">{{this.value}}</div>
                     </div>
-                </span>
-                </div>
-                <div class="col-sm">
-                    <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
-                </div>
-            </div>                
+                    <p><small class="text-muted">{{this.trait_type}}</small></p>                        
+                {{/if_int}}
+                {{/each}}
+            </div>        
+            <div class="col-md-6 card-body pb-0">
+                {{#each this.custom_data.items}}
+                <button class="btn btn-sm btn-primary" disabled>
+                    <p class="m-0">{{this.display_type}}</p>
+                    <p class="m-0"><small>{{this.value_type}}</small></p>
+                </button>
+                {{/each}}
+            </div>            
+            <div class="col-sm">
+                <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
+            </div>
         </script>
 
         <script id="mint-template" type="text/x-handlebars-template">

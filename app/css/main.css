@@ -79,13 +79,14 @@ body {
   text-align: center;
   width: -webkit-fill-available;
   overflow: hidden scroll;
-  height: 200px;
+  height: 150px;
   margin: 0px;
 }
 
 #equip-vw-container {
   justify-content: center;
   margin: auto;
+  border: 2px solid #9962e38f;
 }
 
 .container-equip {
@@ -268,11 +269,9 @@ img {
 .media {
   margin-bottom: 1.5rem;
   margin-right: 2%;
-  border-color: #edf2f9;
   box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
-  background-color: #fff;
+  background-color: transparent;
   background-clip: border-box;
-  border: 1px solid #edf2f9;
   border-radius: .5rem;
   align-items: center;
 }

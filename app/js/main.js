@@ -86,11 +86,12 @@ function menu_click(menu_name)
     return;
 }
 
-function equip_click(index){
-    if ( $('#d_equip_'+index).hasClass('d-none') == true)
-        $('#d_equip_'+index).removeClass('d-none');
+function btn_text_click(id){
+    id ='#'+id;
+    if ( $(id).hasClass('d-none') == true)
+        $(id).removeClass('d-none');
     else
-        $('#d_equip_'+index).addClass('d-none');
+        $(id).addClass('d-none');
 }
 
 function pg_click(index)

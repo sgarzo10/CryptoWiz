@@ -210,7 +210,7 @@
                     </li>
                     {{/each}}
                 </ul>
-                <div id="edit-container" class="card-body" >
+                <div id="edit-container" class="card-body col-md-12" >
                 </div>
             </div>
         </script>
@@ -237,22 +237,22 @@
         <script id="equip-template" type="text/x-handlebars-template">
             <div class="col-md-12 container-items bg-light text-dark rounded">
                 {{#each this}}
-                    <img src="{{this.image}}" onclick="item_click({{@index}})" class="img-item col-md-3 rounded " alt="...">
+                    <img src="{{this.image}}" onclick="item_click({{@index}})" class="img-item col-md-2 rounded " alt="...">
                 {{/each}}
             </div>
-            <div id="equip-vw-container">
+            <div id="equip-vw-container" class="row col-md-12 mt-2 mr-0">
             </div>            
         </script>
 
         <script id="equip-vw-template" type="text/x-handlebars-template">
-            <div class="media col-md-12 mt-2 bg-light text-dark rounded">
+            <div class="media col-md-12 mr-0 bg-light text-dark rounded">
                 <img src="{{this.item-sel.image}}" class="mr-3" alt="...">
                 <div class="media-body">
                     <h5 class="mt-0">{{this.item-sel.name}}</h5>
                     <p><small class="text-muted mb-0">{{this.item-sel.description}}</small></p>
-                </div>
+                </div>                
             </div>
-            <div class=" row col-md-12 mt-2 bg-light text-dark rounded">
+            <div class="row col-md-12 mt-2 bg-light text-dark rounded">
                 <div class="col-md-5 card-body pb-0">
                     <h6 class="card-title">ACTUAL:</h6>
                     <h6 class="card-title text-muted mb-0">{{this.item-act.display_type}}</h6>

@@ -77,9 +77,15 @@ body {
 .container-items {
   border: 2px solid #9962e38f;
   text-align: center;
-  width: fit-content;;
+  width: -webkit-fill-available;
   overflow: hidden scroll;
   height: 200px;
+  margin: 0px;
+}
+
+#equip-vw-container {
+  justify-content: center;
+  margin: auto;
 }
 
 .container-equip {

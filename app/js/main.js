@@ -21,6 +21,10 @@ Handlebars.registerHelper('perc', function(a, b, opts) {
     return a * 100 / b;
 });
 
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 $(document).ready(() => {
     init_contract();
     init_battle();
@@ -109,10 +113,6 @@ function pg_click(index)
     return;
 }
 
-function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
 function item_click(index)
 {
     let equip_vw_container = $('#equip-vw-container');
@@ -170,6 +170,7 @@ function nav_click(nav_name)
     let template = Handlebars.compile($("#".concat(nav_name.toLowerCase()).concat("-template"))[0].innerHTML);
     if (nav_name == "Equip")
         edit_container.html(template(config["items"]));
+        if (config["items"].length > 0) item_click(0);
     if (nav_name == "Bio")
     {
         nft_list[PgSelIndex]["nick"] = nft_list[PgSelIndex]["name"].split(" - ")[1];

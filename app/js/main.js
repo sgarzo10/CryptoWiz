@@ -1,3 +1,6 @@
+//Variabili Globali
+let PgSelIndex = 0;
+
 Handlebars.registerHelper('if_eq', function(a, b, opts) {
     if (a === b) {
         return opts.fn(this);
@@ -79,21 +82,86 @@ function menu_click(menu_name)
     return;
 }
 
+function equip_click(index){
+    if ( $('#d_equip_'+index).hasClass('d-none') == true)
+        $('#d_equip_'+index).removeClass('d-none');
+    else
+        $('#d_equip_'+index).addClass('d-none');
+}
+
 function pg_click(index)
 {
+    $('#img_pg_'+PgSelIndex).removeClass('active');
+    $('#img_pg_'+index).addClass('active');
+    PgSelIndex = index;
     let div_pg = $('#pg-t');
     let template = Handlebars.compile($("#pg-template")[0].innerHTML);
     let p_struct = {
-        "name": Object.values(nft_list)[index]["name"],
-        "image": Object.values(nft_list)[index]["image"],
-        "description": Object.values(nft_list)[index]["description"],
-        "pg": config["test_pg"],
+        "name": Object.values(nft_list)[PgSelIndex]["name"],
+        "image": Object.values(nft_list)[PgSelIndex]["image"],
+        "description": Object.values(nft_list)[PgSelIndex]["description"],
+        "pg": nft_list[PgSelIndex],
         "nav": config["nav"]
     };
     div_pg.html(template(p_struct));
     nav_click('Bio');;
-    pg_img = Object.values(nft_list)[index]["image"];
+    pg_img = Object.values(nft_list)[PgSelIndex]["image"];
     return;
+}
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+function item_click(index)
+{
+    let equip_vw_container = $('#equip-vw-container');
+    let template = Handlebars.compile($("#equip-vw-template")[0].innerHTML);
+
+    let item_vw = {
+        "item-act":{"stats":[]},
+        "item-sel":{"stats":[]}
+    }
+
+    item_vw["item-sel"]["name"] = config["items"][index]["name"]
+    item_vw["item-sel"]["description"] = config["items"][index]["description"]
+    item_vw["item-sel"]["image"] = config["items"][index]["image"]
+    item_vw["item-sel"]["display_type"] = config["items"][index]["custom_data"]["items"][0]["display_type"]
+    item_vw["item-sel"]["value_type"] = config["items"][index]["custom_data"]["items"][0]["value_type"]
+
+
+    for (const [key, value] of Object.entries(config["items"][index]["custom_data"]["items"][0])) {
+        let stat = {
+            "name": key,
+            "val": value,
+            "max_value": config["max_stat_value"]
+        };
+        //if (key !== "max_value" && isNumeric(value))
+        if (isNumeric(value))
+            item_vw["item-sel"]["stats"].push(stat)
+    }
+    
+    for (let val of Object.values(nft_list[PgSelIndex]["custom_data"]["items"]))
+    {
+        if (val["display_type"] === item_vw["item-sel"]["display_type"])
+        {
+            item_vw["item-act"]["display_type"] = val["display_type"];
+            item_vw["item-act"]["value_type"] = val["value_type"];
+
+            for (const [key, value] of Object.entries(val)) {
+                let stat = {
+                    "name": key,
+                    "val": value,
+                    "max_value": config["max_stat_value"]
+                };
+                if (isNumeric(value) )
+                    item_vw["item-act"]["stats"].push(stat)
+            }
+        }
+    }
+
+    //insertAdjacentHTML("afterend",template(item_vw));
+    equip_vw_container.html(template(item_vw));
 }
 
 function nav_click(nav_name)
@@ -101,11 +169,11 @@ function nav_click(nav_name)
     let edit_container = $('#edit-container');
     let template = Handlebars.compile($("#".concat(nav_name.toLowerCase()).concat("-template"))[0].innerHTML);
     if (nav_name == "Equip")
-        edit_container.html(template(config["test_item"]));
+        edit_container.html(template(config["items"]));
     if (nav_name == "Bio")
     {
-        config["test_pg"]["nick"] = config["test_pg"]["name"].split(" - ")[1];
-        edit_container.html(template(config["test_pg"]));
+        nft_list[PgSelIndex]["nick"] = nft_list[PgSelIndex]["name"].split(" - ")[1];
+        edit_container.html(template(nft_list[PgSelIndex]));
     }        
     return;
 }

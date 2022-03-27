@@ -1,5 +1,6 @@
 var config = {
     "environment": "test",
+    "max_stat_value": 50,
     "chain_mainnet": {
         "id": "0x89",
         "nick":"matic",
@@ -98,211 +99,423 @@ var config = {
             "img": "/img/battle_cash.png"
         }        
     ],
-    "test_pg": {
-        "animation_url": null,
-        "custom_data": {
-            "items": [
+    "pg":[
+        {
+            "animation_url": null,
+            "custom_data": {
+                "items": [
+                    {
+                        "attack": 7,
+                        "category": "PE",
+                        "defense": 5,
+                        "display_type": "PELLE",
+                        "precision": 4,
+                        "speed": 4,
+                        "stamina": 5,
+                        "sub_category": "NERO",
+                        "value_type": "NERA",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "SC",
+                        "defense": 0,
+                        "display_type": "SCARPE",
+                        "precision": 0,
+                        "speed": 5,
+                        "stamina": 0,
+                        "sub_category": "BASE",
+                        "value_type": "BASE",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "VE",
+                        "defense": 5,
+                        "display_type": "VESTITO",
+                        "precision": 0,
+                        "speed": 0,
+                        "stamina": 5,
+                        "sub_category": "BNB",
+                        "value_type": "BINANCE",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "OC",
+                        "defense": 0,
+                        "display_type": "ACCESSORIO",
+                        "precision": 5,
+                        "speed": 0,
+                        "stamina": 0,
+                        "sub_category": "MX",
+                        "value_type": "OCCHIO MX",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "CPE",
+                        "defense": 0,
+                        "display_type": "COPRICAPO",
+                        "precision": 8,
+                        "speed": 0,
+                        "stamina": 3,
+                        "sub_category": "COR",
+                        "value_type": "CORONA",
+                    },
+                    {
+                        "attack": 20,
+                        "category": "AC",
+                        "defense": 0,
+                        "display_type": "ARMA",
+                        "precision": 10,
+                        "speed": 0,
+                        "stamina": 0,
+                        "sub_category": "LSR_ETH",
+                        "value_type": "SPADA LASER ETHEREUM",
+                    }
+                ],
+                "total": {
+                    "attack": 27,
+                    "defense": 10,
+                    "precision": 27,
+                    "speed": 9,
+                    "stamina": 13
+                }
+            },
+            "description": "The CryptoWiz number 0",
+            "external_link": null,
+            "image": "/img/pg_0.png",
+            "name": "CryptoWiz - 0",
+            "traits": [
                 {
-                    "attack": 7,
-                    "category": "PE",
-                    "defense": 5,
-                    "display_type": "PELLE",
-                    "precision": 4,
-                    "speed": 4,
-                    "stamina": 5,
-                    "sub_category": "NERO",
-                    "value_type": "NERA"
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Stamina",
+                    "value": 10
                 },
                 {
-                    "attack": 0,
-                    "category": "SC",
-                    "defense": 0,
-                    "display_type": "SCARPE",
-                    "precision": 0,
-                    "speed": 5,
-                    "stamina": 0,
-                    "sub_category": "BASE",
-                    "value_type": "BASE"
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Attack",
+                    "value": 20
                 },
                 {
-                    "attack": 0,
-                    "category": "VE",
-                    "defense": 5,
-                    "display_type": "VESTITO",
-                    "precision": 0,
-                    "speed": 0,
-                    "stamina": 5,
-                    "sub_category": "BNB",
-                    "value_type": "BINANCE"
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Defense",
+                    "value": 30
                 },
                 {
-                    "attack": 0,
-                    "category": "OC",
-                    "defense": 0,
-                    "display_type": "ACCESSORIO",
-                    "precision": 5,
-                    "speed": 0,
-                    "stamina": 0,
-                    "sub_category": "MX",
-                    "value_type": "OCCHIO MX"
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Precision",
+                    "value": 40
                 },
                 {
-                    "attack": 0,
-                    "category": "CPE",
-                    "defense": 0,
-                    "display_type": "COPRICAPO",
-                    "precision": 8,
-                    "speed": 0,
-                    "stamina": 3,
-                    "sub_category": "COR",
-                    "value_type": "CORONA"
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Speed",
+                    "value": 50
                 },
                 {
-                    "attack": 20,
-                    "category": "AC",
-                    "defense": 0,
-                    "display_type": "ARMA",
+                    "display_type": null,
+                    "trait_type": "Pelle",
+                    "value": "Nera"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Scarpe",
+                    "value": "Base"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Vestito",
+                    "value": "Binance"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Accessorio",
+                    "value": "Occhio Mx"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Copricapo",
+                    "value": "Corona"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Arma",
+                    "value": "Spada Laser Ethereum"
+                }
+            ]
+        },
+        {
+            "animation_url": null,
+            "custom_data": {
+                "items": [
+                    {
+                        "attack": 7,
+                        "category": "PE",
+                        "defense": 5,
+                        "display_type": "PELLE",
+                        "precision": 4,
+                        "speed": 4,
+                        "stamina": 5,
+                        "sub_category": "NERO",
+                        "value_type": "NERA",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "SC",
+                        "defense": 0,
+                        "display_type": "SCARPE",
+                        "precision": 0,
+                        "speed": 5,
+                        "stamina": 0,
+                        "sub_category": "BASE",
+                        "value_type": "BASE",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "VE",
+                        "defense": 5,
+                        "display_type": "VESTITO",
+                        "precision": 0,
+                        "speed": 0,
+                        "stamina": 5,
+                        "sub_category": "BNB",
+                        "value_type": "BINANCE",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "OC",
+                        "defense": 0,
+                        "display_type": "ACCESSORIO",
+                        "precision": 5,
+                        "speed": 0,
+                        "stamina": 0,
+                        "sub_category": "MX",
+                        "value_type": "OCCHIO MX",
+                    },
+                    {
+                        "attack": 0,
+                        "category": "CPE",
+                        "defense": 0,
+                        "display_type": "COPRICAPO",
+                        "precision": 8,
+                        "speed": 0,
+                        "stamina": 3,
+                        "sub_category": "COR",
+                        "value_type": "CORONA",
+                    },
+                    {
+                        "attack": 20,
+                        "category": "AC",
+                        "defense": 0,
+                        "display_type": "ARMA",
+                        "precision": 10,
+                        "speed": 0,
+                        "stamina": 0,
+                        "sub_category": "LSR_ETH",
+                        "value_type": "SPADA LASER ETHEREUM",
+                    }
+                ],
+                "total": {
+                    "attack": 50,
+                    "defense": 10,
                     "precision": 10,
-                    "speed": 0,
-                    "stamina": 0,
-                    "sub_category": "LSR_ETH",
-                    "value_type": "SPADA LASER ETHEREUM"
+                    "speed": 50,
+                    "stamina": 13
                 }
-            ],
-            "total": {
-                "attack": 27,
-                "defense": 10,
-                "precision": 27,
-                "speed": 9,
-                "stamina": 13
-            }
-        },
-        "description": "The CryptoWiz number x",
-        "external_link": null,
-        "image": "/img/pg.png",
-        "name": "CryptoWiz - x",
-        "traits": [
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Stamina",
-                "value": 13
             },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Attack",
-                "value": 27
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Defense",
-                "value": 10
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Precision",
-                "value": 27
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Speed",
-                "value": 9
-            },
-            {
-                "display_type": null,
-                "trait_type": "Pelle",
-                "value": "Nera"
-            },
-            {
-                "display_type": null,
-                "trait_type": "Scarpe",
-                "value": "Base"
-            },
-            {
-                "display_type": null,
-                "trait_type": "Vestito",
-                "value": "Binance"
-            },
-            {
-                "display_type": null,
-                "trait_type": "Accessorio",
-                "value": "Occhio Mx"
-            },
-            {
-                "display_type": null,
-                "trait_type": "Copricapo",
-                "value": "Corona"
-            },
-            {
-                "display_type": null,
-                "trait_type": "Arma",
-                "value": "Spada Laser Ethereum"
-            }
-        ]
-    },
-    "test_item": {
-        "animation_url": null,
-        "custom_data": {
-            "items": [
+            "description": "The CryptoWiz number 1",
+            "external_link": null,
+            "image": "/img/pg_1.png",
+            "name": "CryptoWiz - 1",
+            "traits": [
                 {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Stamina",
+                    "value": 15
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Attack",
+                    "value": 25
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Defense",
+                    "value": 35
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Precision",
+                    "value": 45
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Speed",
+                    "value": 50
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Pelle",
+                    "value": "Nera"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Scarpe",
+                    "value": "Base"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Vestito",
+                    "value": "Binance"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Accessorio",
+                    "value": "Occhio Mx"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Copricapo",
+                    "value": "Corona"
+                },
+                {
+                    "display_type": null,
+                    "trait_type": "Arma",
+                    "value": "Spada Laser Ethereum"
+                }
+            ]
+        }        
+    ],
+    "items":[
+        {
+            "animation_url": null,
+            "custom_data": {
+                "items": [
+                    {
+                        "attack": 0,
+                        "category": "VE",
+                        "defense": 50,
+                        "display_type": "VESTITO",
+                        "precision": 0,
+                        "speed": 5,
+                        "stamina": 15,
+                        "sub_category": "BTC",
+                        "value_type": "BITCOIN",
+                    }
+                ],
+                "total": {
                     "attack": 0,
-                    "category": "VE",
                     "defense": 5,
-                    "display_type": "VESTITO",
                     "precision": 0,
                     "speed": 0,
-                    "stamina": 5,
-                    "sub_category": "BNB",
-                    "value_type": "BINANCE"
+                    "stamina": 5
                 }
-            ],
-            "total": {
-                "attack": 0,
-                "defense": 5,
-                "precision": 0,
-                "speed": 0,
-                "stamina": 5
-            }
+            },
+            "description": "The CryptoWiz BTC Dress",
+            "external_link": null,
+            "image": "/img/item_0.png",
+            "name": "CryptoWiz Item - BTC Dress",
+            "traits": [
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Stamina",
+                    "value": 5
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Attack",
+                    "value": 50
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Defense",
+                    "value": 5
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Precision",
+                    "value": 0
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Speed",
+                    "value": 0
+                }
+            ]
         },
-        "description": "The CryptoWiz BNB Dress",
-        "external_link": null,
-        "image": "/img/item.png",
-        "name": "CryptoWiz Item - BNB Dress",
-        "traits": [
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Stamina",
-                "value": 5
+        {
+            "animation_url": null,
+            "custom_data": {
+                "items": [
+                    {
+                        "attack": 0,
+                        "category": "VE",
+                        "defense": 5,
+                        "display_type": "VESTITO",
+                        "precision": 0,
+                        "speed": 0,
+                        "stamina": 5,
+                        "sub_category": "LUNA",
+                        "value_type": "LUNA",
+                        "max_value": 50
+                    }
+                ],
+                "total": {
+                    "attack": 0,
+                    "defense": 5,
+                    "precision": 0,
+                    "speed": 0,
+                    "stamina": 5
+                }
             },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Attack",
-                "value": 0
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Defense",
-                "value": 5
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Precision",
-                "value": 0
-            },
-            {
-                "display_type": null,
-                "max_value": 50,
-                "trait_type": "Speed",
-                "value": 0
-            }
-        ]
-    }    
+            "description": "The CryptoWiz LUNA Dress",
+            "external_link": null,
+            "image": "/img/item_1.png",
+            "name": "CryptoWiz Item - LUNA Dress",
+            "traits": [
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Stamina",
+                    "value": 20
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Attack",
+                    "value": 0
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Defense",
+                    "value": 5
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Precision",
+                    "value": 0
+                },
+                {
+                    "display_type": null,
+                    "max_value": 50,
+                    "trait_type": "Speed",
+                    "value": 0
+                }
+            ]
+        }
+    ]
 }

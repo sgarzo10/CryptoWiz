@@ -54,6 +54,10 @@ body {
   background: linear-gradient(110deg, #6c7380 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #606672 70%, #78808f 70%);
 }
 
+.p-max{
+  font-size: -webkit-xxx-large;
+}
+
 .small, small {
   font-size: 85%;
   width: -webkit-fill-available;
@@ -73,9 +77,21 @@ body {
 .container-items {
   border: 2px solid #9962e38f;
   text-align: center;
-  width: auto;
+  width: fit-content;;
   overflow: hidden scroll;
   height: 200px;
+}
+
+.container-equip {
+  justify-content: center;
+}
+
+img.active{border:2px solid #ccc;}
+
+.progress-bar-sm {
+  height: 0.7rem;
+  overflow: hidden;
+  font-size: .5rem;
 }
 
 /*
@@ -124,7 +140,7 @@ img {
 }
 
 .img-item{
-    width: 35%;
+    width: -webkit-fill-available;
     border: 2px solid rgba(203, 97, 236, 0.795);
     background: linear-gradient(to bottom right, rgba(203, 97, 236, 0.695) 0%, rgba(203, 97, 236, 0.395) 100%);
     margin: 0.1rem 0.1rem 0.1rem 0.1rem;

@@ -33,7 +33,7 @@
         <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap align-items-center mb-3 p-1">            
             <div class="col-md-6 text-left">
                 <a class="navbar-brand p-0 text-left" href="#">
-                    <img id="logo" src="img\pg.png" class="d-inline img-logo" alt="img pg"> 
+                    <img id="logo" src="img\logo.png" class="d-inline img-logo" alt="img pg"> 
                 </a>
                 <h5 id="app-title" class="d-inline">CryptoWiz-TEST</h5> 
             </div>
@@ -186,11 +186,18 @@
                   </div>
                 </div>
                 <p class="card-text mb-0 p-0">Equipments</p>                
-                <div class="row no-gutters">
+                <div class="container no-gutters container-equip">
                     {{#each this.pg.custom_data.items}}
-                    <button class="btn btn-sm btn-primary" disabled>
-                        <p class="m-0">{{this.display_type}}</p>
-                        <p class="m-0"><small>{{this.value_type}}</small></p>
+                    <button id="equip_{{@index}}" class="btn btn-sm btn-primary" onclick="equip_click({{@index}})">
+                            <p class="m-0">{{this.display_type}}</p>
+                            <p class="m-0"><small>{{this.value_type}}</small></p>
+                            <div id="d_equip_{{@index}}" class="card-body text-left p-0 d-none">                            
+                                <small class="text-dark mt-2 d-block">Attack:    {{this.attack}}</small>
+                                <small class="text-dark mt-2 d-block">Defense:   {{this.defense}}</small>
+                                <small class="text-dark mt-2 d-block">Precision: {{this.precision}}</small>
+                                <small class="text-dark mt-2 d-block">Speed:     {{this.speed}}</small>
+                                <small class="text-dark mt-2 d-block">Stamina:   {{this.stamina}}</small>
+                            </div>                        
                     </button>
                     {{/each}}
                 </div>
@@ -212,7 +219,7 @@
             <div class="row no-gutters row-center p-1 m-1">
                 <div class="col-sm col-md-12 text-left">Name</div>
                 <div class="col-sm col-md-12 d-flex">
-                    <small class="text-muted  d-inline">CryptoWiz - </small>
+                    <small class="text-muted text-right mr-2 d-inline">CryptoWiz - </small>
                     <input type="text" class="form-control d-flex d-inline" id="inputName" placeholder="{{this.nick}}">
                 </div>
             </div>
@@ -229,38 +236,49 @@
 
         <script id="equip-template" type="text/x-handlebars-template">
             <div class="col-md-12 container-items bg-light text-dark rounded">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
-                <img src="{{this.image}}" class="img-item col-md-2 rounded " alt="...">
+                {{#each this}}
+                    <img src="{{this.image}}" onclick="item_click({{@index}})" class="img-item col-md-3 rounded " alt="...">
+                {{/each}}
             </div>
-            <div class="col-md-6 card-body pb-0">
-                {{#each this.traits}}
-                {{#if_int this.max_value}}    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{perc this.value this.max_value}}%;" aria-valuenow="{{this.value}}" aria-valuemin="0" aria-valuemax="{{this.max_value}}">{{this.value}}</div>
-                    </div>
-                    <p><small class="text-muted">{{this.trait_type}}</small></p>                        
-                {{/if_int}}
-                {{/each}}
-            </div>        
-            <div class="col-md-6 card-body pb-0">
-                {{#each this.custom_data.items}}
-                <button class="btn btn-sm btn-primary" disabled>
-                    <p class="m-0">{{this.display_type}}</p>
-                    <p class="m-0"><small>{{this.value_type}}</small></p>
-                </button>
-                {{/each}}
+            <div id="equip-vw-container">
             </div>            
+        </script>
+
+        <script id="equip-vw-template" type="text/x-handlebars-template">
+            <div class="media col-md-12 mt-2 bg-light text-dark rounded">
+                <img src="{{this.item-sel.image}}" class="mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0">{{this.item-sel.name}}</h5>
+                    <p><small class="text-muted mb-0">{{this.item-sel.description}}</small></p>
+                </div>
+            </div>
+            <div class=" row col-md-12 mt-2 bg-light text-dark rounded">
+                <div class="col-md-5 card-body pb-0">
+                    <h6 class="card-title">ACTUAL:</h6>
+                    <h6 class="card-title text-muted mb-0">{{this.item-act.display_type}}</h6>
+                    <p class="card-text">{{this.item-act.value_type}}</p>    
+                    {{#each this.item-act.stats}}
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{perc this.val this.max_value }}%;" aria-valuenow="{{this.val}}" aria-valuemin="0" aria-valuemax="{{this.max_value}}">{{this.val}}</div>
+                    </div>
+                    <p><small class="text-muted mb-0">{{this.name}}</small></p>
+                    {{/each}}
+                </div>
+                <div class="col-md-2 card-body pb-0">
+                    <p class="mt-2 p-max">&rarr;</p>
+                </div>    
+                <div class="col-md-5 card-body pb-0">
+                    <h6 class="card-title">ITEM:</h6>
+                    <h6 class="card-title text-muted mb-0">{{this.item-sel.display_type}}</h6>
+                    <p class="card-text">{{this.item-sel.value_type}}</p>
+                    {{#each this.item-sel.stats}}
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{perc this.val this.max_value }}%;" aria-valuenow="{{this.val}}" aria-valuemin="0" aria-valuemax="{{this.max_value}}">{{this.val}}</div>
+                    </div>
+                    <p><small class="text-muted mb-0">{{this.name}}</small></p>
+                    {{/each}}
+                </div>
+            </div>
             <div class="col-sm">
                 <button type="submit" class="btn btn-primary mb-2">Confirm</button>                        
             </div>

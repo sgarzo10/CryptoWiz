@@ -74,8 +74,12 @@ body {
   text-align: -webkit-center;
 }
 
-.container-items {
+.myborder {
   border: 2px solid #9962e38f;
+  border-radius: .5rem;
+}
+
+.container-items {
   text-align: center;
   width: -webkit-fill-available;
   overflow: hidden scroll;
@@ -86,7 +90,6 @@ body {
 #equip-vw-container {
   justify-content: center;
   margin: auto;
-  border: 2px solid #9962e38f;
 }
 
 .container-equip {
@@ -148,7 +151,6 @@ img {
 
 .img-item{
     width: -webkit-fill-available;
-    border: 2px solid rgba(203, 97, 236, 0.795);
     background: linear-gradient(to bottom right, rgba(203, 97, 236, 0.695) 0%, rgba(203, 97, 236, 0.395) 100%);
     margin: 0.1rem 0.1rem 0.1rem 0.1rem;
 }
@@ -266,13 +268,16 @@ img {
 }
 
 
+.media-bg {
+  box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+}
+
 .media {
   margin-bottom: 1.5rem;
   margin-right: 2%;
   box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
   background-color: transparent;
   background-clip: border-box;
-  border-radius: .5rem;
   align-items: center;
 }
 
@@ -309,7 +314,6 @@ img {
 .card {
   margin-bottom: 1.5rem;
   margin-right: 2%;
-  border-color: #edf2f9;
   box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
   position: relative;
   display: flex;
@@ -318,15 +322,12 @@ img {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #edf2f9;
-  border-radius: .5rem;
   height: fit-content;
 }
 
 .card-std {
   margin-bottom: 1.5rem;
   margin-right: 2%;
-  border-color: #edf2f9;
   box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
   position: relative;
   display: flex;
@@ -335,8 +336,6 @@ img {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #edf2f9;
-  border-radius: .5rem;
   height: auto;
 }
 

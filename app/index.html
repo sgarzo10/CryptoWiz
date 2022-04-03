@@ -128,7 +128,8 @@
             <div id="home-t" class="media rounded-top" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <img src="/img/banner.png" alt="banner" class="img-banner">
-                </div>                    
+                </div>
+                <button type="button" class="btn btn-primary btn-lg col-md-2 btn-card" onclick="test_up()">TEST UP</button>
             </div>
         </script>
         
@@ -296,7 +297,7 @@
             <h5 class="card-title">{{this.title}} </h5> 
             <p class="card-text">{{this.text}}</p>   
             {{#each this.mints}}
-            <div class="media col-md-8 position-relative">
+            <div class="media myborder col-md-8 position-relative bg-white">
                 <img src="{{this.img}}" class="mr-3" alt="...">
                 <div class="media-body">
                   <h5 class="mt-0">{{this.title}}</h5>
@@ -342,7 +343,7 @@
             <h5 class="card-title">{{this.title}} </h5> 
             <p class="card-text">{{this.text}}</p>   
             {{#each this.battles}}
-            <div class="media col-md-8 position-relative">
+            <div class="media myborder col-md-8 position-relative bg-white">
                 <img src="{{this.img}}" class="mr-3" alt="...">
                 <div class="media-body">
                   <h5 class="mt-0">{{this.title}}</h5>

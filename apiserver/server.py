@@ -1,5 +1,5 @@
 from logic import get_nft_detail, get_nft_ids, be_generate_nft
-from utility import Config, validate_format
+from utility import Config, validate_format, ipfs_upload, write_file
 from json import loads
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
@@ -13,6 +13,23 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route('/nft_up', methods=["POST"])
+@cross_origin()
+def nft_up():
+    to_ret = {}
+    dest_file = "final"
+    meta = be_generate_nft("finale.pixil", "mage.json", dest_file + ".png")
+    ipfs_res = ipfs_upload(Config.settings['endpoint']['ipfs_server'], f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.png")
+    meta["image"] = meta["image"].replace("{hash}", ipfs_res["hash"])
+    write_file(f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.json", meta)
+    ret = ipfs_upload(Config.settings['endpoint']['ipfs_server'], f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.json")
+    to_ret['metadata_url'] = Config.settings["template_metadata"]["image"].replace("{hash}", ret['hash'])
+    to_ret['metadata_hash'] = ret['hash']
+    to_ret['state'] = ret['state']
+
+    info(f"RESPONSE: {to_ret}")
+    return to_ret
+
 @app.route('/nft_ids', methods=["POST"])
 @cross_origin()
 def nft_ids():
@@ -21,6 +38,7 @@ def nft_ids():
     ret = check_params_nft_ids(body)
     if ret['state']:
         ret = get_nft_ids(loads(body))
+    info(f"RESPONSE: {ret}")
     return ret
 
 
@@ -54,6 +72,7 @@ def nft_detail():
     ret = check_params_nft_detail(body)
     if ret['state']:
         ret = jsonify(get_nft_detail(loads(body)))
+    info(f"RESPONSE: {ret}")
     return ret
 
 
@@ -78,18 +97,10 @@ def check_params_nft_detail(body):
     return to_ret
 
 
-@app.route('/generate_nft', methods=["POST"])
-@cross_origin()
-def generate_nft():
-    body = request.data.decode()
-    info(body)
-    return jsonify(be_generate_nft())
-
-
 if __name__ == '__main__':
     Config().reload()
     basicConfig(
         filename=Config.settings['log']['path_file'],
-        format="%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s",
+        format=Config.settings['log']['format'],
         level=INFO)
     app.run()

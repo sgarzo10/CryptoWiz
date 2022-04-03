@@ -6,3 +6,4 @@
 /test/*
 /apiserver/__pycache__
 /apiserver/log/server.log
+/apiserver/WorkPixil

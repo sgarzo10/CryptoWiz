@@ -10,14 +10,20 @@
         }
     },
     "log": {
-          "path_file": null
+          "path_file": null,
+          "format": "%(asctime)s|%(levelname)s|%(filename)s:%(lineno)s|%(message)s"
+    },
+    "endpoint": {
+        "ipfs_server": "/ip4/127.0.0.1/tcp/5001",
+        "work_pixil": "./WorkPixil/",
+        "work_pixil_gen": "./WorkPixil/gen/"
     },
     "template_metadata": {
         "animation_url": null,
         "name": "CryptoWiz - {name}",
         "description": "",
         "external_link": null,
-        "image": "",
+        "image": "https://ipfs.io/ipfs/{hash}",
         "traits": [],
         "custom_data": {}
     }

@@ -1,6 +1,7 @@
 from utility import make_request, Config
 from logging import exception, info
 from WorkPixil.src import gen_img
+from copy import deepcopy
 
 
 def get_nft_detail(payload):
@@ -22,12 +23,12 @@ def get_nft_ids(payload):
     return res
 
 
-def be_generate_nft():
-    work_pixil_path = "../../WorkPixil/"
-    source = f"{work_pixil_path}source/finale.pixil"
-    template = f"{work_pixil_path}template/mage.json"
-    destination = f"{work_pixil_path}gen/final.png"
-    metadata = Config.settings["template_metadata"]
+def be_generate_nft(source_file, template_file, destination_file):
+    work_pixil_path = Config.settings['endpoint']['work_pixil']
+    source = f"{work_pixil_path}source/{source_file}"
+    template = f"{work_pixil_path}template/{template_file}"
+    destination = f"{Config.settings['endpoint']['work_pixil_gen']}{destination_file}"
+    metadata = deepcopy(Config.settings["template_metadata"])
     metadata["description"] = "The CryptoWiz number x"
     metadata["name"] = metadata["name"].replace("{name}", "x")
     metadata["custom_data"] = gen_img(source, template, False, destination, f"{work_pixil_path}src/")["json"]

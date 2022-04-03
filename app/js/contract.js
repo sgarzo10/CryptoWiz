@@ -70,6 +70,37 @@ async function getBalance(token_name, token_address) {
   return to_ret;
 }
 
+async function mint(hash) {
+  let to_ret = null;
+  if (currentAddress !== ''){  
+    let contract = new web3.eth.Contract(config["methods_mint"], config["contract_NFT"]);
+    //the transaction
+    const tx = {
+      'from': currentAddress,
+      'to': config["contract_NFT"],
+      'data': contract.methods.mint(currentAddress,1,hash).encodeABI()
+    };
+ 
+    //sign transaction via Metamask
+    try {
+      const txHash = await window.ethereum
+          .request({
+              method: 'eth_sendTransaction',
+              params: [tx],
+          });
+      return {
+          success: true,
+          status: "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" + txHash
+      }
+    } catch (error) {
+      return {
+          success: false,
+          status: "😥 Something went wrong: " + error.message
+      }
+    }
+  }
+}
+
 async function checkConnect(accounts){
   if (accounts.length > 0){
     handleAccountsChanged(accounts);

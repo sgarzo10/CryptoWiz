@@ -33,7 +33,33 @@ var config = {
             "outputs": [{"name":"balance","type":"uint256"}],
             "type": "function"
         }
+    ],    
+    "methods_mint": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_quantity",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_hash",
+                    "type": "string"
+                }
+            ],
+            "name": "mint",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
     ],
+    "contract_NFT": "0x493BFE45f62f45e4FeD2656247F9Ca8696f3A876",    
     "tokens_mainnet": {
         "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
         "DAI": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"

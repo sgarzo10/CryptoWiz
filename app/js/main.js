@@ -217,4 +217,22 @@ function show_battle()
     var d_battle = document.getElementById("modal-battle-play");
     d_battle.classList.remove("d-none"); 
 }
- 
+
+function test_up(){
+    var body = {
+    'file_path': "a"
+    }
+
+    $.ajax({
+    url: "http://127.0.0.1:5000/nft_up",
+    type: 'POST',
+    contentType: "application/json",
+    data : JSON.stringify(body),
+    success: function(response){
+        if (response["state"] === true)
+            mint(response["metadata_hash"]);
+    },
+    error: function(xhr){}
+    });
+    return;
+}

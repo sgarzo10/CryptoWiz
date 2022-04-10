@@ -28,13 +28,15 @@ function isNumeric(n) {
 $(document).ready(() => {
     init_contract();
     init_battle();
-    let col_menu = $('#col_menu');
-    let template = Handlebars.compile($('#menu-template')[0].innerHTML);
-    //let menu_list = config.menu;
-    //let menu_list = Object.values(config["pages"])
-    let menu_list = Object(config["pages"])
-    col_menu.html(template(menu_list));
-    feather.replace();
+    if (config["menu"] == true)
+    {
+        let col_menu = $('#col_menu');
+        let template = Handlebars.compile($('#menu-template')[0].innerHTML);    
+        col_menu[0].classList.remove("d-none"); 
+        let menu_list = Object(config["pages"])
+        col_menu.html(template(menu_list));
+        feather.replace();
+    }
     $("#modal-mint").on('hide.bs.modal', function(){
         $("#modal-mint-detail").html("");
     });

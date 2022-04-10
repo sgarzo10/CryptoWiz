@@ -30,38 +30,33 @@
     </head>
 
     <body class="">
-        <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap align-items-center mb-3 p-1">            
-            <div class="col-md-6 text-left">
-                <a class="navbar-brand p-0 text-left" href="#">
-                    <img id="logo" src="img\logo.png" class="d-inline img-logo" alt="img pg"> 
-                </a>
-                <h5 id="app-title" class="d-inline">CryptoWiz-TEST</h5> 
-            </div>
-            <div class="col-md-6 text-right">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>N.D.</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
-                <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton"></button>
-            </div>
-        </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2">
-                    <nav class="card bg-light">
-                        <div class="sidebar-sticky">
-                            <ul id="col_menu" class="nav flex-column">
-                            </ul>
-                            <div class="a_social">
-                                <a href="#" class="col-md-2"><img src="/img/opensea.png" alt="OpenSea Link" style="width:30px;height:30px;"></a>
-                                <a href="#" class="col-md-2"><img src="/img/twitter.png" alt="OpenSea Link" style="width:30px;height:30px;"></a>
-                            </div>
-                        </div>
-                    </nav>
+        <div class="container-fluid mb-5">
+            <nav class="col-md-12 navbar navbar-light bg-light sticky-top flex-md-nowrap align-items-center mb-3 p-1">            
+                <div class="col-md-6 text-left">
+                    <a class="navbar-brand p-0 text-left" href="#">
+                        <img id="logo" src="img\logo.png" class="d-inline img-logo" alt="img pg"> 
+                    </a>
+                    <h5 id="app-title" class="d-inline">CryptoWiz-TEST</h5> 
                 </div>
+                <div class="col-md-6 text-right">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="getBalance" disabled>N.D.</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="getChain" disabled>N.D.</button>                
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="connectButton"></button>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid mt-5">
+            <div class="row ">
+                <div id="col_menu" class="col-md-2 mt-5 d-none">
+                <!-- MENU -->
+                </div>
+                <div id="main" class="text-center m-5 "></div>
+                <!--
                 <div id="main" class="card card-main col-md-8 text-center mr-2 ml-2 bg-grey">
-                    <!-- TEMPLATE                     <canvas id="viewport" class="d-none" ></canvas>-->
+                     TEMPLATE                     <canvas id="viewport" class="d-none" ></canvas>-->
 
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2 d-none"></div>
             </div>
         </div>
 
@@ -112,25 +107,73 @@
 
         <!-- SCRIPTS -->
         <script id="menu-template" type="text/x-handlebars-template">
-            {{#each this}}
-                <li class="nav-item nav-link-menu">
-                    <a class="nav-link" onclick="menu_click('{{@key}}')">
-                        <span data-feather="{{this.icon}}"></span>
-                        {{this.menu}}
-                    </a>
-                </li>                
-            {{/each}}
+            <nav class="card bg-light">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        {{#each this}}
+                        <li class="nav-item nav-link-menu">
+                            <a class="nav-link" onclick="menu_click('{{@key}}')">
+                                <span data-feather="{{this.icon}}"></span>
+                                {{this.menu}}
+                            </a>
+                        </li>                
+                        {{/each}}                        
+                    </ul>
+                    <div class="a_social">
+                        <a href="#" class="col-md-2"><img src="/img/opensea.png" alt="OpenSea Link" style="width:30px;height:30px;"></a>
+                        <a href="#" class="col-md-2"><img src="/img/twitter.png" alt="OpenSea Link" style="width:30px;height:30px;"></a>
+                    </div>
+                </div>
+            </nav>
+
+
+
         </script>
 
         <script id="home-template" type="text/x-handlebars-template">
-            <h5 class="card-title">{{this.title}} </h5> 
-            <p class="card-text">{{this.text}}</p>   
-            <div id="home-t" class="media rounded-top" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <img src="/img/banner.png" alt="banner" class="img-banner">
+            <div id="about" style="height: 20%;margin-top: 20px;"></div>
+            <div id="home-about">
+                <div class="media">
+                    <img src="/img/pg_0.png" class="w-64 h-64 rounded-md object-cover">
+                    <div class="md:items-start items-center justify-center text-center">
+                        <h2 class="font-bold text-2xl md:text-4xl uppercase">{{this.title}}</h2>
+                        <p class="mt-6 text-lg">
+                            {{this.text}}
+                        </p>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg col-md-2 btn-card" onclick="test_up()">TEST UP</button>
+                <a href="#mint"> Go to MINTING &#10141;</a>
             </div>
+            <div id="mint"style="height: 20%;margin-top: 20px;"></div>
+            <div id="home-mint" class="mt-5">
+                <div class="card m-3 p-3 " style="width: max-content;">
+                    <h5 class="card-title">PUBLIC SALE</h5>
+                    <p class="card-text">&#128640; Mint a "LAUNCH Collection" NFT &#128640;</p>
+                    <div class="row ">
+                        <div class="col-md-4 ">
+                            <img id="gif-mint" src="img/mint.gif" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body pb-0">
+                                <div class="row d-flex justify-content-center mb-1">
+                                    <button type="button" class="btn btn-primary text-center btn-sm col-md-1" >-  </button>    
+                                    <p class="text-center col-md-5 mt-3"><small class="text-muted">1</small></p>                                    
+                                    <button type="button" class="btn btn-primary btn-sm col-md-1" >+</button>    
+                                </div>
+                                <small class="text-muted">Max Mint Amount: 1</small>
+                                <div class="border-tb row justify-content-center mt-5">
+                                    <p class="text-left col-md-4 mt-3"><small class="text-dark">TOTAL</small></p>
+                                    <p class="text-right col-md-8 mt-3"><small class="text-dark">0.005 </small> <small class="text-muted">+ GAS</small></p>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-lg mt-4 col-md-2 btn-card" onclick="test_up()">TEST UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-text mt-4 mb-2 p-0">CONTRACTS</h5>
+                    <p><small class="text-muted">0x6a709b054deb0c4b201df12e982b3196fc1bbff1</small></p>                        
+                </div>
+                <a href="#about"> Go to HOME &#10141;</a>
+            </div>                                
         </script>
         
         <script id="party-template" type="text/x-handlebars-template"> 

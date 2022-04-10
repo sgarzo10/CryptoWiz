@@ -1,5 +1,5 @@
 from logic import get_nft_detail, get_nft_ids, be_generate_nft
-from utility import Config, validate_format, ipfs_upload, write_file
+from utility import Config, validate_format, ipfs_upload, write_file, make_request
 from json import loads
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
@@ -20,6 +20,8 @@ def nft_up():
     dest_file = "final"
     meta = be_generate_nft("finale.pixil", "mage.json", dest_file + ".png")
     ipfs_res = ipfs_upload(Config.settings['endpoint']['ipfs_server'], f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.png")
+    for x in range(0, int(Config.settings['proxy_req'])):
+        make_request(ipfs_res['response'],None,True)
     meta["image"] = meta["image"].replace("{hash}", ipfs_res["hash"])
     write_file(f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.json", meta)
     ret = ipfs_upload(Config.settings['endpoint']['ipfs_server'], f"{Config.settings['endpoint']['work_pixil_gen']}{dest_file}.json")

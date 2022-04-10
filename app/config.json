@@ -59,7 +59,7 @@ var config = {
             "type": "function"
         }
     ],
-    "contract_NFT": "0x493BFE45f62f45e4FeD2656247F9Ca8696f3A876",    
+    "contract_NFT": "0x41Bc4eCc48CdB8F0D7FB575d9AceC7C83c6374cf",    
     "tokens_mainnet": {
         "CWIZt": "0xa61F0AD5A30b3165Da1AcF283FBC81Ab77c3391B",
         "DAI": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"
@@ -69,13 +69,14 @@ var config = {
     },    
     "token_contract_mainnet": "0x2953399124F0cBB46d2CbACD8A89cF0599974963",
     "token_contract_test": "0x6a709b054deb0c4b201df12e982b3196fc1bbff1",
+    "menu": false,
     "pages": {
         "HOME":
         {
             "menu":"HOME",
             "icon":"home",
             "title":"CryptoWiz NFT Adventures",
-            "text":"Create and customize your unique CryptoWiz NFT to play a new DEGEN crypto adventure."            
+            "text":"CryptoWiz are collections of 777 high customizable NFTs living in the core of the MATIC blockchain. Each individual CryptoWiz is carefully composed from over 10 traits and personalizale with more of 1000 items, along with some incredibly rare 1/1s that have traits that can't be found from any other CryptoWiz. Our vision is to create an ultra creative project which will allow you to define your UNIQUE and DEGEN crypto personality! Spell on, CryptoWiz!"
         },
         "PARTY":
         {

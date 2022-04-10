@@ -1,4 +1,6 @@
-
+/*
+ * App
+ 
 body {
   font-family: 'Wonder Boy In Monster World', sans-serif; 
   font-size: 1.0rem;
@@ -7,11 +9,74 @@ body {
   background-size:cover;
   background-blend-mode: multiply;  
 }
+*/
+html {
+  scroll-behavior: smooth;
+}
 
+
+body {
+  font-family: 'Wonder Boy In Monster World', sans-serif; 
+  font-size: 1.0rem;
+  height:5%;
+  background:url(/img/castle.gif) rgb(238, 224, 247);
+  background-size:100px 100px cover;
+  background-blend-mode: multiply;  
+  background-position: bottom left;
+  background-repeat: no-repeat;  
+  overflow-y: hidden; /* Hide vertical scrollbar */
+}
+
+#home-mint, #home-about{
+  height: 100%;
+  text-align: -webkit-center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+
+.border-tb{
+  border: 0px solid #9962e38f;
+  border-width: 5px 0px; /* 20px top and bottom, 5px on the sides */
+  border-radius: .1rem;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 /*
  * NavBar (Barra Alta)
  */
  
+ .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
  .app-title {
   text-align:center;
 }
